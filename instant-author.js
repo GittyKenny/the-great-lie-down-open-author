@@ -1,0 +1,67 @@
+const cfg=window.INSTANT_AUTHOR_SUPABASE||{};
+const defaults={authors:['Bob'],character_name:'Bob',dedication:'To humanity. May you never have to read this again.'};
+const clean=(value,fallback='',max=500)=>(String(value??'').replace(/\s+/g,' ').trim()||fallback).slice(0,max);
+
+class InstantAuthorShell extends HTMLElement{
+ connectedCallback(){if(this.ready)return;this.ready=true;this.work=this.getAttribute('work');this.readerRoute=this.isReaderRoute();this.baseEdition={...defaults,authors:[...defaults.authors]};this.edition={...this.baseEdition,authors:[...this.baseEdition.authors]};this.personalised=false;this.savedEditionSlug='';this.render();this.bind();this.boot()}
+ isReaderRoute(){const params=new URLSearchParams(location.search);return params.has('read')||params.has('edition')||params.has('ia_author')}
+ render(){this.innerHTML=`<main class="ia-shell">
+  <section class="ia-home" aria-labelledby="ia-title" ${this.readerRoute?'hidden':''}><div class="ia-home-card">
+   <div class="ia-mini-cover" aria-hidden="true"><span>🏖️</span><strong>THE GREAT<br>LIE DOWN</strong><i>The Pinnacle of Human Achievement</i></div>
+   <div class="ia-book-meta"><h1 id="ia-title">The Great Lie Down</h1><p class="ia-subtitle">The Pinnacle of Human Achievement</p>
+    <div class="ia-home-authors"><span class="ia-authors-label">By</span><div class="ia-home-author-window"><div class="ia-home-author-track" aria-label="Authors"></div></div><button class="ia-home-add" type="button" aria-label="Become a Lazy Author" title="Become a Lazy Author">＋</button></div>
+    <div class="ia-home-actions"><button class="ia-primary ia-read" type="button">Read the book</button><button class="ia-secondary ia-customise" type="button">Customise</button><button class="ia-text-button ia-share-home" type="button">Share</button></div>
+   </div></div></section>
+  <iframe class="ia-story" title="${this.getAttribute('title')}" src="${this.getAttribute('story')}" ${this.readerRoute?'':'hidden'}></iframe>
+  <dialog class="ia-dialog"><div class="ia-dialog-head"><h2>Lazy Author</h2><button class="ia-icon-button ia-close" type="button" aria-label="Close">×</button></div>
+   <nav class="ia-dialog-tabs" aria-label="Book customisation"><button class="ia-tab" data-step="join" type="button">Join the authors</button><button class="ia-tab" data-step="personalise" type="button">Personal copy</button></nav>
+   <section class="ia-step ia-join"><h3>Become a Lazy Author</h3><p class="ia-purpose">Instantly become a Lazy Author of <strong>The Great Lie Down</strong>.</p><div class="ia-author-block"><span>Authors</span><div class="ia-author-pills"></div><div class="ia-author-add"><input name="author" maxlength="80" autocomplete="name" placeholder="Your name" aria-label="Your author name"><button class="ia-join-submit" type="button" aria-label="Add your name">＋</button></div></div><p class="ia-authorship-guidance"></p><p class="ia-inline-status ia-join-status" role="status"></p><div class="ia-after-join" hidden><button class="ia-primary ia-join-done" type="button">Done</button></div></section>
+   <section class="ia-step ia-personalise" hidden><h3>Customise your copy</h3><p>Give this copy its own author, character and dedication.</p><label class="ia-field">Author<input name="edition_author" maxlength="80" autocomplete="name" placeholder="Your name"></label><label class="ia-field">Character name<input name="character" maxlength="60"></label><label class="ia-field">Dedication<textarea name="dedication" maxlength="500"></textarea></label><p class="ia-inline-status ia-copy-status" role="status"></p><div class="ia-actions"><button class="ia-secondary ia-reset-copy" type="button">Reset</button><button class="ia-primary ia-apply-copy" type="button">Done</button></div></section>
+   <div class="ia-toast ia-dialog-toast" role="status"></div></dialog><div class="ia-toast ia-page-toast" role="status"></div>
+ </main>`;this.frame=this.querySelector('.ia-story');this.home=this.querySelector('.ia-home');this.dialog=this.querySelector('.ia-dialog')}
+ bind(){
+  this.querySelector('.ia-close').onclick=()=>this.dialog.close();
+  this.querySelector('.ia-home-add').onclick=()=>this.openSettings('join');
+  this.querySelector('.ia-customise').onclick=()=>this.openSettings('personalise');
+  this.querySelector('.ia-read').onclick=()=>this.openReader(true);
+  this.querySelector('.ia-share-home').onclick=()=>this.shareCurrent();
+  this.querySelectorAll('.ia-tab').forEach(button=>button.onclick=()=>this.showStep(button.dataset.step));
+  this.querySelector('[name=author]').addEventListener('input',()=>this.paintAuthorPills());
+  this.querySelector('[name=author]').addEventListener('keydown',event=>{if(event.key==='Enter'){event.preventDefault();this.join()}});
+  this.querySelector('.ia-join-submit').onclick=()=>this.join();
+  this.querySelector('.ia-join-done').onclick=()=>this.dialog.close();
+  this.querySelector('.ia-apply-copy').onclick=()=>this.applyPersonalisation();
+  this.querySelector('.ia-reset-copy').onclick=()=>this.resetPersonalisation();
+  window.addEventListener('message',event=>{if(event.source===this.frame.contentWindow&&event.data?.type==='instant-author:ready')this.apply()});
+  window.addEventListener('popstate',()=>this.route())
+ }
+ async boot(){
+  const params=new URLSearchParams(location.search),slug=params.get('edition');
+  if(slug&&this.hasApi())try{const rows=await this.rpc('blingbooks_get_edition',{edition_slug:slug});if(!rows?.[0])throw new Error('Missing edition');const row=rows[0],author=clean(row.edition_author||row.authors?.at(-1),'Anonymous',80);this.edition={authors:[author],character_name:row.character_name,dedication:row.dedication};this.personalised=true;this.savedEditionSlug=slug}catch{this.toast('This copy could not be loaded')}
+  else if(params.has('ia_author')){this.edition={authors:[clean(params.get('ia_author'),'Anonymous',80)],character_name:clean(params.get('ia_character'),defaults.character_name,60),dedication:clean(params.get('ia_dedication'),defaults.dedication,500)};this.personalised=true}
+  else await this.loadAuthors();
+  if(!this.personalised)this.baseEdition={...this.edition,authors:[...this.edition.authors]};
+  this.paintAuthors();this.paintAuthorshipMode();this.apply();this.route()
+ }
+ route(){const params=new URLSearchParams(location.search);if(params.has('read')||params.has('edition')||params.has('ia_author'))this.showReader();else this.showHome()}
+ showHome(){this.home.hidden=false;this.frame.hidden=true}
+ showReader(){this.home.hidden=true;this.frame.hidden=false;this.apply()}
+ openReader(push){if(push){const url=new URL(location.href);url.searchParams.set('read','1');history.pushState({reader:true},'',url)}this.showReader()}
+ hasApi(){return Boolean(cfg.url&&cfg.anonKey)}
+ async rpc(name,body){const response=await fetch(`${cfg.url}/rest/v1/rpc/${name}`,{method:'POST',headers:{apikey:cfg.anonKey,Authorization:`Bearer ${cfg.anonKey}`,'Content-Type':'application/json'},body:JSON.stringify(body)});if(!response.ok)throw new Error(await response.text());if(response.status===204)return null;const text=await response.text();return text?JSON.parse(text):null}
+ async loadAuthors(){if(!this.hasApi())return;try{const rows=await this.rpc('blingbooks_list_authors',{work_slug:this.work}),names=rows.map(row=>row.display_name).filter(Boolean);if(names.length)this.edition.authors=names;if(rows[0]?.authorship_mode)this.authorshipMode=rows[0].authorship_mode}catch{this.toast('Author list is temporarily unavailable')}}
+ apply(){this.frame.contentWindow?.postMessage({type:'instant-author:apply-edition',edition:this.edition},'*')}
+ openSettings(step){this.populatePersonalisation();this.showStep(step);this.paintAuthorPills();this.paintAuthorshipMode();this.dialog.showModal()}
+ showStep(name){this.querySelector('.ia-join').hidden=name!=='join';this.querySelector('.ia-personalise').hidden=name!=='personalise';this.querySelectorAll('.ia-tab').forEach(button=>{const active=button.dataset.step===name;button.classList.toggle('is-active',active);button.setAttribute('aria-selected',String(active))})}
+ populatePersonalisation(){this.querySelector('[name=edition_author]').value=this.personalised?(this.edition.authors[0]||''):'';this.querySelector('[name=character]').value=this.edition.character_name;this.querySelector('[name=dedication]').value=this.edition.dedication;this.querySelector('.ia-copy-status').textContent=''}
+ paintAuthors(){const track=this.querySelector('.ia-home-author-track'),names=this.edition.authors.length?this.edition.authors:['Anonymous'];track.replaceChildren();track.classList.remove('is-moving');const group=document.createElement('div');group.className='ia-author-ticker-group';group.replaceChildren(...names.map(name=>{const pill=document.createElement('span');pill.textContent=name;return pill}));track.append(group);requestAnimationFrame(()=>{const windowNode=this.querySelector('.ia-home-author-window'),shouldMove=group.scrollWidth>windowNode.clientWidth||names.length>3;if(shouldMove){const repeat=group.cloneNode(true);repeat.setAttribute('aria-hidden','true');track.append(repeat);track.classList.add('is-moving')}})}
+ paintAuthorPills(){const box=this.querySelector('.ia-author-pills');if(!box)return;box.replaceChildren(...this.baseEdition.authors.map(name=>{const pill=document.createElement('span');pill.textContent=name;return pill}));const draft=clean(this.querySelector('[name=author]')?.value,'',80);if(draft&&!this.baseEdition.authors.some(name=>name.toLowerCase()===draft.toLowerCase())){const preview=document.createElement('span');preview.className='ia-author-preview';preview.textContent=draft;box.append(preview)}}
+ paintAuthorshipMode(){const mode=this.authorshipMode||'automatic',text=this.querySelector('.ia-authorship-guidance');text.textContent=mode==='approval'?'Approval is required. Your name will appear after the book owner approves it.':mode==='closed'?'This author list is currently closed.':'No approval needed. Your name will appear immediately.';this.querySelector('.ia-author-add').hidden=mode==='closed';this.querySelector('.ia-home-add').hidden=mode==='closed'}
+ async join(){const input=this.querySelector('[name=author]'),name=clean(input.value,'',80);if(!name)return this.toast('Enter your author name');const button=this.querySelector('.ia-join-submit');button.disabled=true;try{const result=this.hasApi()?await this.rpc('blingbooks_request_authorship',{work_slug:this.work,author_name:name}):'approved',submitted=typeof result==='string'?result:(result?.status||'approved'),status=this.querySelector('.ia-join-status');if(submitted==='approved'){this.baseEdition.authors=[...new Set([...this.baseEdition.authors,name])];if(!this.personalised)this.edition={...this.edition,authors:[...this.baseEdition.authors]};input.value='';this.paintAuthors();this.paintAuthorPills();this.apply();status.textContent=`${name} is now an author of this book.`}else status.textContent=`${name} was submitted for approval.`;this.querySelector('.ia-after-join').hidden=false}catch{this.querySelector('.ia-join-status').textContent='That name could not be submitted. Please try again.'}finally{button.disabled=false}}
+ applyPersonalisation(){const author=clean(this.querySelector('[name=edition_author]').value,'',80);if(!author){this.querySelector('.ia-copy-status').textContent='Add the author name for this copy.';return}this.edition={authors:[author],character_name:clean(this.querySelector('[name=character]').value,defaults.character_name,60),dedication:clean(this.querySelector('[name=dedication]').value,defaults.dedication,500)};this.personalised=true;this.savedEditionSlug='';this.paintAuthors();this.apply();this.dialog.close();this.toast('Your personalised copy is ready to read or share')}
+ resetPersonalisation(){this.querySelector('[name=edition_author]').value='';this.querySelector('[name=character]').value=defaults.character_name;this.querySelector('[name=dedication]').value=defaults.dedication;this.querySelector('.ia-copy-status').textContent='Fields reset. Select Done to apply them.'}
+ async shareCurrent(){const button=this.querySelector('.ia-share-home');button.disabled=true;try{let url=new URL(location.href);url.search='';if(this.personalised){if(this.hasApi()){if(!this.savedEditionSlug){const result=await this.rpc('blingbooks_create_edition',{work_slug:this.work,edition_author:this.edition.authors[0],edition_character:this.edition.character_name,edition_dedication:this.edition.dedication});this.savedEditionSlug=result?.[0]?.share_slug||result?.share_slug;if(!this.savedEditionSlug)throw new Error('No copy slug')}url.searchParams.set('edition',this.savedEditionSlug)}else{url.searchParams.set('ia_author',this.edition.authors[0]);url.searchParams.set('ia_character',this.edition.character_name);url.searchParams.set('ia_dedication',this.edition.dedication)}}url.searchParams.set('read','1');await this.copyUrl(url.href,'Story link copied')}catch{this.toast('The story link could not be created. Please try again.')}finally{button.disabled=false}}
+ async copyUrl(url,message){try{await navigator.clipboard.writeText(url);this.toast(message)}catch{window.prompt('Copy this link:',url)}}
+ toast(message){const node=this.dialog?.open?this.querySelector('.ia-dialog-toast'):this.querySelector('.ia-page-toast');node.textContent=message;node.dataset.visible='';clearTimeout(this.timer);this.timer=setTimeout(()=>delete node.dataset.visible,2600)}
+}
+customElements.define('instant-author-shell',InstantAuthorShell);

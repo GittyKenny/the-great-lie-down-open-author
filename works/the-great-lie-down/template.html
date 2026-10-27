@@ -1,0 +1,1800 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Great Lie Down — The Pinnacle of Human Achievement</title>
+<style>
+    * { box-sizing: border-box; }
+    html {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+      overflow-x: clip;
+      overscroll-behavior-x: none;
+      scroll-behavior: smooth;
+      scroll-snap-type: y mandatory;
+      background: #fff8d8;
+    }
+    body {
+      width: 100%;
+      max-width: 100%;
+      margin: 0;
+      overflow-x: hidden;
+      overflow-x: clip;
+      overscroll-behavior-x: none;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #fff8d8;
+      color: #18181b;
+    }
+
+    section {
+      min-height: 100vh;
+      scroll-snap-align: start;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+      background-size: 24px 24px;
+    }
+
+    .comic-border { position: absolute; inset: 20px; border: 4px dashed rgba(0,0,0,0.15); border-radius: 36px; pointer-events: none; z-index: 2; }
+    .speed-line { position: absolute; width: 220px; height: 3px; background: rgba(0,0,0,0.10); transform: rotate(-18deg); border-radius: 999px; }
+    .line-1 { top: 18%; left: -60px; }
+    .line-2 { top: 24%; right: 0; }
+    .line-3 { bottom: 20%; left: 10%; }
+
+    .slide-1 {
+      background: #fff4a8;
+      isolation: isolate;
+    }
+    .slide-1::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 240vmax;
+      height: 240vmax;
+      z-index: 0;
+      background:
+        repeating-conic-gradient(from -18deg at 50% 50%, #fff7c2 0deg 9deg, #ffb300 9deg 18deg);
+      transform-origin: center;
+      animation: sunburstBreath 72s linear infinite;
+      opacity: 0.98;
+      will-change: transform;
+    }
+    .slide-1::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        radial-gradient(circle at 50% 42%, rgba(255,255,255,0.92), rgba(255,255,255,0.38) 26%, transparent 58%),
+        radial-gradient(rgba(0,0,0,0.08) 2px, transparent 2px);
+      background-size: auto, 20px 20px;
+      pointer-events: none;
+    }
+    @keyframes sunburstBreath {
+      0% { transform: translate(-50%, -50%) rotate(0deg) scale(1.02); }
+      25% { transform: translate(-50%, -50%) rotate(90deg) scale(1.05); }
+      50% { transform: translate(-50%, -50%) rotate(180deg) scale(1.02); }
+      75% { transform: translate(-50%, -50%) rotate(270deg) scale(1.05); }
+      100% { transform: translate(-50%, -50%) rotate(360deg) scale(1.02); }
+    }
+
+    .slide-2 { background: linear-gradient(135deg, #ffd84d, #ff8c00, #ff4fd8); }
+    .slide-3 { background: linear-gradient(135deg, #ffb300, #ffef70, #ff7a00); }
+    .slide-4 { background: linear-gradient(135deg, #00d9ff, #9f6fff, #ff4fd8); }
+    .slide-5 { background: linear-gradient(135deg, #111827, #3b0764, #e11d48); color: #fff; }
+    .slide-6 { background: linear-gradient(135deg, #fff0bf, #d8c5ff, #bfefff); }
+    .slide-7 { background: linear-gradient(135deg, #f8f4ff, #fff6d1, #d7fbff); }
+    .slide-8 { background: linear-gradient(135deg, #72ff4d, #00ffd5, #00b7ff); }
+    .slide-9 { background: linear-gradient(135deg, #b14dff, #ff4fd8, #ffb300); }
+    .slide-loop { background: linear-gradient(135deg, #ffb300, #ff4fd8, #7c3aed); }
+    .slide-10 { background: linear-gradient(135deg, #ffdd00, #00d9ff, #72ff4d); }
+
+    .panel {
+      width: min(100%, 1050px);
+      background: rgba(255,255,255,0.88);
+      border: 5px solid rgba(0,0,0,0.15);
+      border-radius: 42px;
+      padding: 52px;
+      text-align: center;
+      position: relative;
+      z-index: 3;
+      box-shadow: 0 18px 0 rgba(0,0,0,0.09), 0 35px 80px rgba(0,0,0,0.16);
+      transform: rotate(-1deg);
+      backdrop-filter: blur(10px);
+    }
+    .panel--dense {
+      width: min(100%, 980px);
+      padding: 42px 42px 36px;
+    }
+    .panel--dense .sticker {
+      margin-bottom: 18px;
+      padding: 10px 20px;
+      font-size: 13px;
+    }
+    .slide-9 .epilogue-opening {
+      margin-top: 32px;
+      margin-bottom: 22px;
+      font-weight: 700;
+    }
+    .slide-9 .epilogue-arrival {
+      margin: 0 0 15px;
+      font-size: clamp(12px, 1.6vw, 16px);
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #25243d;
+    }
+    .panel--dense h1 {
+      margin-bottom: 16px;
+      font-size: clamp(40px, 6.5vw, 82px);
+    }
+    .panel--dense .small-text,
+    .panel--dense .ending {
+      font-size: clamp(16px, 1.55vw, 20px);
+      line-height: 1.42;
+    }
+    .panel--dense .ending {
+      margin-top: 16px;
+    }
+    .slide-5 .panel { background: rgba(255,255,255,0.92); color: #18181b; }
+    .slide-6 .panel--dense {
+      width: min(100%, 1000px);
+      padding: 38px 38px 32px;
+    }
+    .slide-6 .panel--dense h1 {
+      margin-bottom: 12px;
+      font-size: clamp(34px, 5.6vw, 74px);
+    }
+    .slide-6 .small-text,
+    .slide-6 .ending {
+      font-size: clamp(15px, 1.45vw, 19px);
+      line-height: 1.28;
+    }
+    .slide-4 .no-gap {
+      margin-top: 0;
+    }
+    .slide-6 .small-text.ending,
+    .slide-6 .ending {
+      margin-top: 10px;
+    }
+    .slide-7 .panel--dense {
+      width: min(100%, 1020px);
+      padding: 34px 38px 28px;
+    }
+    .slide-7 .panel--dense h1 {
+      margin-bottom: 6px;
+      font-size: clamp(32px, 5vw, 64px);
+    }
+    .slide-7 h2 {
+      margin-bottom: 10px;
+      font-size: clamp(18px, 2.2vw, 26px);
+    }
+    .slide-7 .small-text,
+    .slide-7 .ending {
+      font-size: clamp(14px, 1.35vw, 18px);
+      line-height: 1.22;
+    }
+    .slide-7 .small-text.ending {
+      margin-top: 6px;
+    }
+    .slide-7 .ending {
+      margin-top: 8px;
+    }
+
+    .sticker {
+      display: inline-block;
+      background: #111111;
+      color: #ffffff;
+      border-radius: 999px;
+      padding: 12px 24px;
+      margin-bottom: 24px;
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      transform: rotate(-4deg);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.14);
+    }
+
+    h1 { margin: 0 0 22px; font-size: clamp(44px, 8vw, 104px); line-height: 0.9; font-weight: 1000; letter-spacing: -0.06em; text-transform: uppercase; }
+    .gradient-title {
+      background: linear-gradient(135deg, #ff2b5f, #ffd700, #00d9ff, #ff4fd8);
+      background-size: 260% 260%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(3px 3px 0 rgba(0,0,0,0.14));
+      animation: shimmer 4s ease-in-out infinite;
+    }
+    @keyframes shimmer { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+    h2 { max-width: 820px; margin: 0 auto 28px; font-size: clamp(22px, 3vw, 36px); line-height: 1.2; font-weight: 900; }
+    h2 em { font-style: normal; font-weight: inherit; }
+    p { max-width: 880px; margin: 0 auto; font-size: clamp(18px, 2.1vw, 27px); line-height: 1.45; font-weight: 650; color: #52525b; white-space: pre-line; }
+    .slide-5 p { color: #3f3f46; }
+    .small-text { font-size: clamp(17px, 1.75vw, 22px); line-height: 1.55; }
+    .ending { margin-top: 22px; color: #18181b; font-weight: 1000; }
+
+    .accent { position: absolute; font-size: 72px; opacity: 0.9; color: #0f172a; text-shadow: 2px 2px 0 rgba(255,255,255,0.85), 5px 5px 0 rgba(15,23,42,0.25); user-select: none; z-index: 4; pointer-events: none; }
+    .accent.top { top: 42px; left: 42px; transform: rotate(-10deg); }
+    .accent.bottom { bottom: 42px; right: 42px; transform: rotate(12deg); font-size: 90px; opacity: 0.75; }
+    .slide-2 .accent.bottom {
+      right: 20px;
+      bottom: 18px;
+      font-size: clamp(68px, 9vw, 88px);
+      opacity: 0.78;
+    }
+    .slide-9 .accent.bottom {
+      right: 14px;
+      bottom: 10px;
+      font-size: clamp(54px, 5.2vw, 72px);
+      opacity: 0.72;
+    }
+    .slide-8 .panel--dense,
+    .slide-loop .panel--dense,
+    .slide-9 .panel--dense,
+    .slide-10 .panel--dense {
+      width: min(100%, 1000px);
+      padding: 38px 38px 32px;
+    }
+    .slide-8 .panel--dense h1,
+    .slide-loop .panel--dense h1,
+    .slide-9 .panel--dense h1,
+    .slide-10 .panel--dense h1 {
+      margin-bottom: 10px;
+      font-size: clamp(34px, 5.4vw, 70px);
+    }
+    .slide-8 .small-text,
+    .slide-8 .ending,
+    .slide-loop .small-text,
+    .slide-loop .ending,
+    .slide-9 .small-text,
+    .slide-9 .ending,
+    .slide-10 .small-text,
+    .slide-10 .ending {
+      font-size: clamp(15px, 1.4vw, 18.5px);
+      line-height: 1.28;
+    }
+    .slide-8 .small-text.ending,
+    .slide-loop .small-text.ending,
+    .slide-9 .small-text.ending,
+    .slide-10 .small-text.ending {
+      margin-top: 8px;
+    }
+    .slide-8 .ending,
+    .slide-loop .ending,
+    .slide-9 .ending,
+    .slide-10 .ending {
+      margin-top: 10px;
+    }
+    .slide-loop .quote--note {
+      max-width: 800px;
+      margin-top: 8px;
+      font-size: clamp(14px, 1.3vw, 17px);
+      line-height: 1.28;
+      font-weight: 750;
+      color: #18181b;
+    }
+    .slide-10 .ending.final-cta {
+      margin-top: 12px;
+      font-size: clamp(28px, 5vw, 44px);
+      line-height: 1.05;
+      font-weight: 1000;
+      letter-spacing: 0.04em;
+      text-shadow: 0 2px 0 rgba(255,255,255,0.78), 0 6px 16px rgba(17,24,39,0.2);
+      animation: finalCtaPulse 2.2s ease-in-out infinite;
+    }
+    .slide-10 .ending.still-time {
+      margin-top: 14px;
+    }
+    .countdown {
+      margin: 16px auto 8px;
+      font-size: clamp(34px, 6vw, 52px);
+      line-height: 1;
+      animation: countdownTick 1.2s steps(2, end) infinite;
+      transform-origin: center;
+    }
+    @keyframes countdownTick {
+      0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
+      50% { transform: scale(1.1) rotate(-8deg); opacity: 0.8; }
+    }
+    @keyframes finalCtaPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.035); }
+    }
+
+
+    .extras-link {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 11px 18px;
+      border-radius: 999px;
+      background: #111827;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: clamp(12px, 1.3vw, 15px);
+      font-weight: 1000;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      box-shadow: 0 7px 0 rgba(0,0,0,0.18), 0 14px 30px rgba(0,0,0,0.18);
+      transform: rotate(-1.5deg);
+    }
+    .extras-link:hover {
+      transform: rotate(1deg) translateY(-2px);
+    }
+    .slide-10 .extras-link--footer {
+      position: absolute;
+      left: 50%;
+      bottom: 22px;
+      margin-top: 0;
+      z-index: 5;
+      transform: translateX(-50%) rotate(-1.5deg);
+    }
+    .slide-10 .extras-link--footer:hover {
+      transform: translateX(-50%) rotate(1deg) translateY(-2px);
+    }
+
+    .hero-title { position: relative; z-index: 5; text-align: center; width: min(94vw, 1050px); transform: translateY(-10px); }
+    .hero-title .sticker { margin-bottom: 18px; }
+    .hero-title h1 { font-size: clamp(58px, 12vw, 128px); margin-bottom: 18px; }
+    .hero-subtitle {
+      max-width: 820px;
+      min-height: 82px;
+      margin: 0 auto;
+      font-size: clamp(20px, 3vw, 34px);
+      font-weight: 1000;
+      line-height: 1.12;
+      text-transform: uppercase;
+      color: #111827;
+      text-shadow: 3px 3px 0 rgba(255,255,255,0.72);
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .hero-subtitle.is-changing { opacity: 0; transform: translateY(10px) scale(0.985); }
+
+    .archive-folder {
+      position: absolute;
+      right: 6%;
+      bottom: 15%;
+      width: 92px;
+      height: 68px;
+      z-index: 2;
+      transform: rotate(8deg);
+      animation: folderFloat 4.8s ease-in-out infinite;
+      filter: drop-shadow(0 9px 9px rgba(0,0,0,0.2));
+    }
+    .archive-folder::before {
+      content: "";
+      position: absolute;
+      left: 6px;
+      top: 0;
+      width: 42px;
+      height: 20px;
+      background: #ffd36e;
+      border: 4px solid #111827;
+      border-bottom: 0;
+      border-radius: 10px 10px 0 0;
+      transform: skewX(-10deg);
+    }
+    .archive-folder::after {
+      content: "ARCHIVE";
+      position: absolute;
+      inset: 13px 0 0 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #ffe08a, #ffb84d);
+      border: 4px solid #111827;
+      border-radius: 12px 15px 15px 15px;
+      color: #111827;
+      font-size: 10px;
+      font-weight: 1000;
+      letter-spacing: 0.07em;
+      box-shadow: inset 0 6px 0 rgba(255,255,255,0.4), 6px 6px 0 rgba(15,23,42,0.14);
+    }
+    .corner-icons {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      pointer-events: none;
+    }
+    .corner-icon {
+      position: absolute;
+      width: 66px;
+      height: 66px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 44px;
+      line-height: 1;
+      filter: drop-shadow(0 6px 8px rgba(0,0,0,0.2));
+      animation: floaty 4.2s ease-in-out infinite;
+      transition: opacity 0.35s ease, transform 0.35s ease;
+      transform-origin: center;
+      user-select: none;
+    }
+    .corner-icon svg {
+      width: 92%;
+      height: 92%;
+      display: block;
+    }
+    .corner-icon.is-swapping {
+      opacity: 0;
+      transform: translateY(8px) scale(0.92);
+    }
+    .corner-1 { top: 8%; left: 6%; }
+    .corner-2 { top: 8%; right: 6%; animation-delay: 0.8s; }
+    .corner-3 { bottom: 8%; left: 6%; animation-delay: 1.5s; }
+    .corner-4 { bottom: 8%; right: 6%; animation-delay: 2.2s; }
+    @keyframes floaty { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+    @keyframes folderFloat { 0%,100% { transform: rotate(8deg) translateY(0); } 50% { transform: rotate(8deg) translateY(-10px); } }
+    @media (max-width: 720px) {
+      .corner-icon { width: 50px; height: 50px; font-size: 34px; }
+      .corner-1 { top: 9%; left: 4%; }
+      .corner-2 { top: 9%; right: 4%; }
+      .corner-3 { bottom: 10%; left: 4%; }
+      .corner-4 { bottom: 10%; right: 4%; }
+    }
+
+    @media (max-width: 720px) {
+      section { padding: 22px; }
+      .panel { padding: 34px 22px; border-radius: 30px; }
+      .panel--dense { padding: 30px 20px 26px; }
+      .panel--dense h1 { font-size: clamp(34px, 9.5vw, 58px); }
+      .hero-title h1 { font-size: clamp(40px, 10vw, 56px); letter-spacing: -0.055em; }
+      .sticker { font-size: 11px; letter-spacing: 0.16em; }
+      .accent {
+        display: block;
+        font-size: 42px;
+        opacity: 0.9;
+        z-index: 6;
+        filter: drop-shadow(1px 1px 0 rgba(255,255,255,0.82)) drop-shadow(0 2px 4px rgba(0,0,0,0.18));
+      }
+      .accent.top {
+        top: 10px;
+        left: 10px;
+      }
+      .accent.bottom {
+        bottom: 10px;
+        right: 10px;
+        font-size: 42px;
+      }
+      .slide-3 .accent.top {
+        font-size: 52px;
+      }
+      .slide-3 .accent.bottom {
+        font-size: 52px;
+      }
+      .slide-2 .accent.bottom,
+      .slide-9 .accent.bottom {
+        font-size: 42px;
+      }
+      .slide-7 .accent.bottom {
+        right: -32px;
+        bottom: -32px;
+        font-size: 26px;
+      }
+      .hero-title { transform: translateY(-18px); }
+      .hero-subtitle { min-height: 92px; }
+      .archive-folder { width: 70px; height: 52px; right: 4%; bottom: 12%; opacity: 0.86; }
+      .archive-folder::after { inset: 10px 0 0 0; font-size: 8px; border-width: 3px; border-radius: 9px 12px 12px 12px; }
+      .archive-folder::before { left: 5px; border-width: 3px; width: 32px; height: 15px; border-radius: 8px 8px 0 0; }
+
+      /* Tighten only the longer middle-story cards on small screens. */
+      .slide-4 .panel--dense,
+      .slide-5 .panel--dense,
+      .slide-6 .panel--dense,
+      .slide-7 .panel--dense,
+      .slide-8 .panel--dense,
+      .slide-loop .panel--dense,
+      .slide-9 .panel--dense {
+        padding: 24px 16px 20px;
+      }
+      .slide-4 .panel--dense h1,
+      .slide-5 .panel--dense h1,
+      .slide-6 .panel--dense h1,
+      .slide-7 .panel--dense h1,
+      .slide-8 .panel--dense h1,
+      .slide-loop .panel--dense h1,
+      .slide-9 .panel--dense h1 {
+        margin-bottom: 8px;
+        font-size: clamp(30px, 8vw, 52px);
+      }
+      .slide-4 h2,
+      .slide-5 h2,
+      .slide-6 h2,
+      .slide-7 h2,
+      .slide-8 h2,
+      .slide-loop h2,
+      .slide-9 h2 {
+        margin-bottom: 8px;
+        font-size: clamp(16px, 4.1vw, 22px);
+      }
+      .slide-4 .small-text,
+      .slide-4 .ending,
+      .slide-5 .small-text,
+      .slide-5 .ending,
+      .slide-6 .small-text,
+      .slide-6 .ending,
+      .slide-7 .small-text,
+      .slide-7 .ending,
+      .slide-8 .small-text,
+      .slide-8 .ending,
+      .slide-loop .small-text,
+      .slide-loop .ending,
+      .slide-9 .small-text,
+      .slide-9 .ending {
+        font-size: clamp(13px, 3.6vw, 16px);
+        line-height: 1.18;
+      }
+      .slide-4 .small-text.ending,
+      .slide-4 .ending,
+      .slide-5 .small-text.ending,
+      .slide-5 .ending,
+      .slide-6 .small-text.ending,
+      .slide-6 .ending,
+      .slide-7 .small-text.ending,
+      .slide-7 .ending,
+      .slide-8 .small-text.ending,
+      .slide-8 .ending,
+      .slide-loop .small-text.ending,
+      .slide-loop .ending,
+      .slide-9 .small-text.ending,
+      .slide-9 .ending {
+        margin-top: 6px;
+      }
+      .slide-loop .quote--note {
+        margin-top: 6px;
+        font-size: clamp(13px, 3.4vw, 15px);
+        line-height: 1.2;
+      }
+
+      /* Slide 3 needs extra tightening on mobile to fit the viewport. */
+      .slide-3 .panel--dense {
+        padding: 24px 16px 18px;
+      }
+      .slide-3 .sticker {
+        padding: 8px 14px;
+        margin-bottom: 14px;
+        font-size: 10px;
+        letter-spacing: 0.14em;
+      }
+      .slide-3 .panel--dense h1 {
+        margin-bottom: 8px;
+        font-size: clamp(28px, 7vw, 46px);
+      }
+      .slide-3 .small-text,
+      .slide-3 .ending {
+        font-size: clamp(12px, 3.1vw, 14px);
+        line-height: 1.12;
+      }
+      .slide-3 .small-text.ending,
+      .slide-3 .ending {
+        margin-top: 6px;
+      }
+
+      .slide-10 .extras-link--footer {
+        bottom: 14px;
+        padding: 9px 14px;
+        font-size: clamp(11px, 3.4vw, 13px);
+      }
+    }
+
+    @media (max-width: 1100px) {
+      .panel--dense {
+        padding: 36px 34px 30px;
+      }
+      .panel--dense h1 {
+        font-size: clamp(38px, 6vw, 72px);
+      }
+      .panel--dense .small-text,
+      .panel--dense .ending {
+        font-size: clamp(15px, 1.8vw, 19px);
+      }
+      .slide-2 .accent.bottom {
+        right: 14px;
+        bottom: 14px;
+        font-size: clamp(60px, 8vw, 76px);
+      }
+      .slide-7 .accent.bottom {
+        right: 42px;
+        bottom: 42px;
+        font-size: 90px;
+      }
+    }
+  
+    /* Rumours: compact, responsive panel; avoid text overflowing the slide. */
+    .slide-rumours .panel--dense { width: min(100%, 960px); padding: clamp(18px, 3vh, 32px) clamp(18px, 3vw, 38px); }
+    .slide-rumours .panel--dense .sticker { margin-bottom: 10px; padding: 8px 16px; }
+    .slide-rumours .panel--dense h1 { font-size: clamp(32px, 5vw, 62px); margin-bottom: 6px; }
+    .slide-rumours .panel--dense h2 { font-size: clamp(18px, 2.2vw, 26px); margin-bottom: 10px; }
+    .slide-rumours .panel--dense p.small-text { font-size: clamp(14px, 1.25vw, 17px); line-height: 1.3; margin-top: 8px; }
+    .slide-rumours .panel--dense .rumours-award { font-size: clamp(16px, 1.5vw, 20px); line-height: 1.28; margin-top: 10px; }
+    @media (max-width: 600px) {
+      .slide-rumours .panel--dense { padding: 18px 15px; }
+      .slide-rumours .panel--dense p.small-text { font-size: 14px; line-height: 1.28; margin-top: 7px; }
+      .slide-rumours .panel--dense h1 { font-size: 34px; }
+    }
+
+/* Integrated Postscript extras */
+.extras-page * { box-sizing: border-box; }
+.extras-page {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #fff;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(255, 221, 0, 0.28), transparent 28%),
+        radial-gradient(circle at 80% 18%, rgba(0, 217, 255, 0.22), transparent 30%),
+        radial-gradient(circle at 50% 90%, rgba(255, 79, 216, 0.26), transparent 34%),
+        linear-gradient(135deg, #0f172a, #25003f 46%, #111827);
+      overflow-x: hidden;
+    }
+.extras-page::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        repeating-linear-gradient(
+          to bottom,
+          rgba(255,255,255,0.04) 0px,
+          rgba(255,255,255,0.04) 1px,
+          transparent 1px,
+          transparent 5px
+        );
+      mix-blend-mode: screen;
+      opacity: 0.5;
+      z-index: 1;
+    }
+.extras-page::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(circle at center, transparent 45%, rgba(0,0,0,0.62));
+      z-index: 2;
+    }
+.extras-page .page {
+      position: relative;
+      z-index: 3;
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 34px 0 70px;
+    }
+.extras-page .topbar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+.extras-page .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 16px;
+      border: 3px solid rgba(255,255,255,0.32);
+      border-radius: 999px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 1000;
+      background: rgba(255,255,255,0.11);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      backdrop-filter: blur(10px);
+    }
+.extras-page .hero {
+      position: relative;
+      overflow: hidden;
+      border: 5px solid rgba(255,255,255,0.18);
+      border-radius: 38px;
+      padding: clamp(32px, 5vw, 64px);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.16), rgba(255,255,255,0.06)),
+        radial-gradient(circle at 20% 20%, rgba(255,221,0,0.22), transparent 30%),
+        radial-gradient(circle at 75% 20%, rgba(0,217,255,0.22), transparent 30%);
+      box-shadow: 0 20px 0 rgba(0,0,0,0.18), 0 40px 80px rgba(0,0,0,0.35);
+      text-align: center;
+      margin-bottom: 34px;
+      transform: rotate(-0.6deg);
+    }
+.extras-page .hero::before {
+      content: "REC  ●";
+      position: absolute;
+      top: 22px;
+      right: 28px;
+      color: #ff4d4d;
+      font-weight: 1000;
+      letter-spacing: 0.12em;
+      text-shadow: 0 0 12px rgba(255,77,77,0.8);
+      animation: blink 1.1s steps(2, end) infinite;
+    }
+@keyframes blink {
+      0%, 48% { opacity: 1; }
+      49%, 100% { opacity: 0.35; }
+    }
+.extras-page .sticker {
+      display: inline-block;
+      background: #fff;
+      color: #111827;
+      border-radius: 999px;
+      padding: 12px 24px;
+      margin-bottom: 22px;
+      font-size: clamp(12px, 1.4vw, 14px);
+      font-weight: 1000;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      transform: rotate(-4deg);
+      box-shadow: 0 8px 0 rgba(0,0,0,0.2);
+    }
+.extras-page h1 {
+      margin: 0;
+      font-size: clamp(48px, 9vw, 112px);
+      line-height: 0.9;
+      letter-spacing: -0.065em;
+      text-transform: uppercase;
+      font-weight: 1000;
+      background: linear-gradient(135deg, #ff2b5f, #ffd700, #00d9ff, #ff4fd8);
+      background-size: 260% 260%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(4px 4px 0 rgba(0,0,0,0.24));
+      animation: shimmer 4s ease-in-out infinite;
+    }
+@keyframes shimmer {
+      0%,100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+.extras-page .hero p {
+      max-width: 720px;
+      margin: 22px auto 0;
+      color: #fff7cc;
+      font-size: clamp(18px, 2.4vw, 30px);
+      line-height: 1.18;
+      font-weight: 1000;
+      text-transform: uppercase;
+      text-shadow: 3px 3px 0 rgba(0,0,0,0.25);
+    }
+.extras-page .extras-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+.extras-page .card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 34px;
+      border: 4px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.92);
+      color: #18181b;
+      box-shadow: 0 16px 0 rgba(0,0,0,0.16), 0 30px 70px rgba(0,0,0,0.28);
+      padding: clamp(24px, 3.2vw, 38px);
+    }
+.extras-page .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(rgba(0,0,0,0.08) 2px, transparent 2px);
+      background-size: 18px 18px;
+      opacity: 0.45;
+      pointer-events: none;
+    }
+.extras-page .card > * { position: relative; z-index: 1; }
+.extras-page .card h2 {
+      margin: 0;
+      font-size: clamp(36px, 5.5vw, 70px);
+      line-height: 0.9;
+      letter-spacing: -0.055em;
+      text-transform: uppercase;
+      font-weight: 1000;
+      color: #111827;
+      text-shadow: 3px 3px 0 rgba(255,221,0,0.5);
+    }
+.extras-page .card .subtitle {
+      display: inline-block;
+      margin: 12px 0 22px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: #111827;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 1000;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      transform: rotate(-2deg);
+    }
+.extras-page .blooper {
+      border: 3px dashed rgba(17,24,39,0.24);
+      border-radius: 22px;
+      padding: 18px;
+      margin: 14px 0;
+      background: rgba(255,255,255,0.72);
+      box-shadow: inset 0 0 0 2px rgba(255,221,0,0.16);
+    }
+.extras-page .blooper-id {
+      display: inline-block;
+      margin-bottom: 10px;
+      color: #ff2b5f;
+      font-weight: 1000;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 13px;
+    }
+.extras-page .speaker {
+      margin: 9px 0 3px;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      color: #52525b;
+      font-weight: 1000;
+    }
+.extras-page .line {
+      margin: 0;
+      color: #111827;
+      font-weight: 900;
+      font-size: clamp(16px, 1.8vw, 19px);
+      line-height: 1.25;
+    }
+.extras-page .line em {
+      font-style: italic;
+      color: #3f3f46;
+    }
+.extras-page .scene {
+      margin: 16px 0 0;
+      padding: 16px 0 0;
+      border-top: 3px solid rgba(17,24,39,0.12);
+    }
+.extras-page .scene-title {
+      margin: 0 0 6px;
+      color: #7c2d12;
+      font-weight: 1000;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-size: 13px;
+    }
+.extras-page .scene p {
+      margin: 0;
+      color: #18181b;
+      font-size: clamp(16px, 1.7vw, 20px);
+      line-height: 1.28;
+      font-weight: 850;
+    }
+.extras-page .credits {
+      margin-top: 26px;
+      border-radius: 34px;
+      border: 4px solid rgba(255,255,255,0.18);
+      background: rgba(0,0,0,0.32);
+      box-shadow: 0 18px 0 rgba(0,0,0,0.2), 0 30px 70px rgba(0,0,0,0.26);
+      padding: clamp(24px, 4vw, 42px);
+      text-align: center;
+    }
+.extras-page .credits h2 {
+      margin: 0 0 18px;
+      font-size: clamp(34px, 6vw, 72px);
+      line-height: 0.9;
+      letter-spacing: -0.055em;
+      text-transform: uppercase;
+      font-weight: 1000;
+      color: #ffdd00;
+      text-shadow: 4px 4px 0 rgba(0,0,0,0.32);
+    }
+.extras-page .credits p {
+      max-width: 820px;
+      margin: 12px auto 0;
+      color: #fef3c7;
+      font-size: clamp(16px, 2vw, 22px);
+      line-height: 1.35;
+      font-weight: 850;
+    }
+.extras-page .credits strong { color: #fff; }
+.extras-page .footer {
+      text-align: center;
+      padding: 32px 0 0;
+    }
+.extras-page .footer a {
+      display: inline-block;
+      color: #111827;
+      background: #ffdd00;
+      text-decoration: none;
+      border-radius: 999px;
+      padding: 14px 22px;
+      font-weight: 1000;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      box-shadow: 0 8px 0 rgba(0,0,0,0.24);
+    }
+@media  (max-width: 820px) {.extras-page .topbar {
+        justify-content: center;
+      }
+.extras-page .hero {
+        border-radius: 28px;
+      }
+.extras-page .card {
+        border-radius: 26px;
+      }}
+.extras-page { min-height:100vh; scroll-snap-align:start; position:relative; display:block; overflow:visible; padding:0; background-size:auto; }
+.extras-page section.card { display:block; min-height:0; padding:clamp(24px,3.2vw,38px); overflow:hidden; background:rgba(255,255,255,.92); }
+.extras-page .hero h1 { font-size:clamp(48px,9vw,112px); line-height:.9; margin:0; }
+.extras-page .page { position:relative; }
+.extras-page .topbar { display:none; }
+.extras-page .footer a { cursor:pointer; }
+@media(max-width:600px){ .extras-page .page{width:calc(100% - 20px);padding:24px 0 50px;} .extras-page .card{padding:22px;} }
+
+/* Integrated extras: collapsed until explicitly opened. */
+.extras-page .page, .extras-page .extras-grid { overflow: visible; }
+.extras-page[hidden] { display: none !important; }
+.extras-page .credits { display: block !important; min-height: 0; scroll-snap-align: none; overflow: visible; text-align: center; }
+.extras-page .credits h2 { display: block; width: 100%; margin: 0 0 24px; }
+.extras-page .credits p { display: block; width: 100%; max-width: 760px; margin: 16px auto 0; line-height: 1.5; overflow-wrap: break-word; }
+.extras-page .footer .extras-close { display: inline-block; background: #ffdd00; color: #111827; border: 0; border-radius: 999px; padding: 14px 22px; font: 1000 15px Arial,sans-serif; text-transform: uppercase; cursor: pointer; box-shadow: 0 8px 0 rgba(0,0,0,.24); }
+.slide-10 button.extras-link { font-family: inherit; cursor: pointer; }
+html.extras-open { scroll-snap-type: none; }
+@media (max-width: 600px) { .extras-page .credits { padding: 24px 18px; } .extras-page .credits p { font-size: 16px; } }
+
+    /* Final journal: give the closing reflection its own breathing room. */
+    .slide-10 .journal-closing {
+      margin: 28px auto 0;
+      padding-top: 15px;
+      max-width: 780px;
+      border-top: 1px solid rgba(24, 24, 27, 0.18);
+      font-size: clamp(20px, 2.65vw, 29px);
+      line-height: 1.2;
+      font-weight: 800;
+    }
+    @media (max-width: 640px) {
+      .slide-10 .journal-closing {
+        margin-top: 18px;
+        padding-top: 11px;
+        font-size: clamp(17px, 4.4vw, 23px);
+      }
+    }
+
+/* Discovery scene: give the new title and transition their own identity. */
+.slide-discovery .scene-transition { font-style: italic; }
+.slide-discovery .discovery-eyebrow { font-size: clamp(0.75rem, 1.3vw, 0.95rem); letter-spacing: .12em; text-transform: uppercase; font-style: italic; opacity: .75; margin: 0 0 18px; text-align: center; }
+.slide-discovery .panel--dense, .slide-upgrade .panel--dense { max-height: none; overflow: visible; }
+.slide-upgrade { height:auto; min-height:100vh; overflow:visible; padding-block:48px; }
+@media(max-width:600px) { .slide-upgrade { padding-block:28px; } }
+
+/* Opening: one title, one book, no rotating captions or promotional badges. */
+.slide-1 .hero-title--book { width:min(94vw,760px); transform:none; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:clamp(16px,3vh,30px); }
+.slide-1 .hero-title--book h1 { font-size:clamp(42px,8.2vw,94px); line-height:.98; margin:0; }
+.hero-book { width:clamp(175px,27vw,255px); aspect-ratio: .71; height:auto; flex:none; position:relative; transform:perspective(850px) rotateY(-9deg) rotateZ(-2deg); filter:drop-shadow(15px 20px 16px rgba(12,18,42,.28)); }
+.hero-book__spine { position:absolute; left:-10px; top:3px; bottom:3px; width:17px; background:linear-gradient(90deg,#10182f,#344264,#151e39); transform:skewY(-12deg); border-radius:3px 0 0 3px; }
+.hero-book__cover { position:absolute; inset:0; width:100%; height:100%; box-sizing:border-box; border-radius:3px 9px 9px 3px; border:2px solid #c7a968; box-shadow:inset 0 0 0 5px #1d2944,inset 0 0 0 6px #8b7957; background:radial-gradient(circle at 55% 27%,#394968,#151e35 72%); color:#f3e6c9; padding:clamp(16px,3vw,26px) 14px; display:flex; flex-direction:column; align-items:center; text-align:center; justify-content:center; gap:12px; }
+.hero-book__symbol { color:#e7c77c; font-size:30px; }
+.hero-book__name { font-family:Georgia,serif; font-weight:700; font-size:clamp(20px,3.2vw,31px); line-height:1.12; letter-spacing:.03em; }
+.hero-book__rule { height:1px; width:62%; background:#b99c66; }
+.hero-book__subtitle { font:italic clamp(11px,1.6vw,15px)/1.35 Georgia,serif; }
+.hero-book__author { margin-top:auto; font-size:clamp(10px,1.2vw,12px); letter-spacing:.02em; }
+@media(max-width:600px) { .slide-1 .hero-title--book { gap:20px; } .slide-1 .hero-title--book h1 { font-size:clamp(39px,10vw,58px); } .hero-book { width:clamp(168px,48vw,220px); } .hero-book__name { font-size:clamp(19px,5.1vw,25px); } }
+@media(max-height:620px) { .hero-book { width:clamp(135px,23vh,195px); } .slide-1 .hero-title--book { gap:12px; } }
+
+/* v94 comparison: subtitle under main title and author beneath book. */
+.slide-1 .hero-title--book { gap:clamp(10px,2vh,19px); }
+.slide-1 .hero-outer-subtitle { margin:0 0 clamp(6px,1.2vh,12px); font-family:Georgia,serif; font-style:italic; font-size:clamp(17px,2.3vw,25px); color:#283b65; text-align:center; line-height:1.3; }
+@media(max-width:600px) { .slide-1 .hero-title--book { gap:12px; } .slide-1 .hero-outer-subtitle { font-size:clamp(15px,4vw,19px); } .slide-1 .hero-book { width:clamp(150px,43vw,200px); } }
+@media(max-height:650px) { .slide-1 .hero-title--book { gap:7px; } .slide-1 .hero-outer-subtitle { margin-bottom:3px; } .slide-1 .hero-book { width:clamp(125px,23vh,185px); } }
+
+/* v106: Treat the book cover and all of its lettering as one proportional design.
+   Container query units tie every internal measurement to the BOOK width,
+   not independently to the browser viewport. */
+.slide-1 .hero-book { container-type:inline-size; }
+.slide-1 .hero-book__cover {
+  border-width: .8cqw;
+  border-radius: 1.2cqw 3.5cqw 3.5cqw 1.2cqw;
+  padding: 8cqw 5.5cqw;
+  gap: 4.7cqw;
+  box-shadow: inset 0 0 0 2cqw #1d2944, inset 0 0 0 2.4cqw #8b7957;
+}
+.slide-1 .hero-book__spine { left:-4cqw; top:1.2cqw; bottom:1.2cqw; width:6.7cqw; border-radius:1.2cqw 0 0 1.2cqw; }
+.slide-1 .hero-book__symbol { font-size:11.8cqw; line-height:1; }
+.slide-1 .hero-book__name,
+.slide-1 .hero-book .hero-book__name { font-size:12.15cqw; line-height:1.12; letter-spacing:.03em; }
+.slide-1 .hero-book__rule { height:.4cqw; flex:none; }
+.slide-1 .hero-book__subtitle { font-size:5.9cqw; line-height:1.35; }
+.slide-1 .hero-book__author { font-size:4.7cqw; line-height:1.3; margin-top:auto; }
+/* v4: Rebalance the cover after removing the author line.
+   Spread the symbol, title, divider and subtitle over the available height. */
+.slide-1 .hero-book__cover {
+  justify-content:space-around;
+  gap:2cqw;
+  padding-block:10cqw;
+}
+.slide-1 .hero-book__name { transform:translateY(-1.2cqw); }
+.slide-1 .hero-book__rule { margin-top:1.2cqw; }
+.slide-1 .hero-book__subtitle { margin-top:1.5cqw; }
+
+/* v35: Make room for the author credit without changing the book dimensions. */
+.slide-1 .hero-book__cover { justify-content:flex-start; gap:2.5cqw; padding-top:7cqw; padding-bottom:7cqw; }
+.slide-1 .hero-book__symbol { margin-bottom:1cqw; }
+.slide-1 .hero-book__name { transform:none; }
+.slide-1 .hero-book__rule { margin-top:0; }
+.slide-1 .hero-book__subtitle { margin-top:0; }
+.slide-1 .hero-book__author { margin-top:auto; font-family:Georgia,serif; font-size:6.2cqw; line-height:1.2; color:#e7c77c; }
+
+/* v36: Centre the cover artwork in the space above the author credit.
+   Keep "by Bob" anchored near the bottom on every screen size. */
+.slide-1 .hero-book__cover { gap:0; }
+.slide-1 .hero-book__main {
+  display:flex;
+  flex:1 1 auto;
+  min-height:0;
+  width:100%;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:3.2cqw;
+}
+.slide-1 .hero-book__main .hero-book__symbol { margin-bottom:1.2cqw; }
+.slide-1 .hero-book__main .hero-book__rule { width:62%; }
+.slide-1 .hero-book__author { flex:none; margin-top:0; }
+
+/* v37: Give the star, title, rule and subtitle more breathing room.
+   The author remains independently anchored at the bottom. */
+.slide-1 .hero-book__main {
+  justify-content:space-evenly;
+  gap:1.8cqw;
+  padding-top:3cqw;
+  padding-bottom:2cqw;
+  box-sizing:border-box;
+}
+.slide-1 .hero-book__main .hero-book__symbol { margin-bottom:0; }
+
+/* v38: Raise the star, title, rule and subtitle slightly as one group.
+   Preserve their spacing and keep the author credit in place. */
+.slide-1 .hero-book__main { transform:translateY(-2.2cqw); }
+
+/* Native beach emoji on the miniature book cover. */
+.slide-1 .hero-book__beach { display:flex; align-items:center; justify-content:center; width:30cqw; height:23cqw; font-size:20cqw; line-height:1; font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif; }
+
+/* Standalone postscript review: always visible after the final journal page. */
+.review-page { background:radial-gradient(circle at 50% 25%,#5c3179 0%,#230f35 52%,#100b20 100%); color:#fff; padding:clamp(26px,5vw,56px) 18px; overflow:visible; }
+.review-shell {width:min(100%,760px);text-align:center;margin:auto;}
+.review-collection {display:grid;gap:22px;}
+.review-entry {padding:clamp(20px,3vw,32px);}
+.review-entry .review-stars {margin:0;}
+.review-entry blockquote {margin:15px auto 22px;font-size:clamp(17px,2.6vw,23px);}
+.review-entry .review-byline {padding-top:13px;}
+.review-kicker {font-size:clamp(10px,1.7vw,13px);font-weight:900;letter-spacing:.19em;color:#ffe47a;margin-bottom:10px;}
+.review-heading {font-size:clamp(42px,8vw,78px);line-height:1;letter-spacing:-.05em;color:#ffdb00;text-shadow:4px 5px 0 #381246;margin:0 0 25px;}
+.review-paper {background:#fffaf0;color:#202138;border-radius:18px;padding:clamp(24px,5vw,46px);box-shadow:0 14px 0 #11091c,0 24px 50px #0008;text-align:center;border:3px solid #f6d68b;}
+.review-topline {display:flex;justify-content:space-between;gap:12px;border-bottom:2px solid #e4d8bd;padding-bottom:14px;font-size:clamp(9px,1.4vw,11px);letter-spacing:.12em;font-weight:800;color:#746b61;}
+.review-book {font-family:Georgia,serif;font-size:clamp(24px,5vw,42px);font-weight:900;line-height:1.07;margin-top:28px;}
+.review-subtitle {font:italic clamp(15px,2.3vw,20px) Georgia,serif;margin-top:8px;color:#57546a;}
+.review-stars {font-size:clamp(34px,6vw,54px);letter-spacing:.07em;color:#b8b5b1;margin:22px 0 0;line-height:1.1;}
+.review-stars span {color:#e3a321;}
+.review-score {font-size:11px;letter-spacing:.13em;font-weight:900;color:#9a462b;margin-top:8px;}
+.review-paper blockquote {font:italic clamp(19px,3.1vw,27px)/1.48 Georgia,serif;margin:26px auto;max-width:550px;padding:0;border:0;}
+.review-byline {border-top:2px solid #e4d8bd;padding-top:16px;display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;}
+.review-byline span {font-size:10px;font-weight:900;letter-spacing:.12em;color:#746b61;}
+.review-byline strong {font-size:clamp(13px,2vw,17px);}
+.review-extras-button {margin:28px auto 0;cursor:pointer;background:#ffdc00;color:#1a1028;border:0;border-radius:99px;padding:14px 24px;font-weight:900;text-transform:uppercase;box-shadow:0 7px 0 #0d0717;}
+.review-extras-button:hover {transform:translateY(-2px);}
+@media(max-width:500px){.review-topline{letter-spacing:.04em}.review-page{padding:26px 12px}.review-heading{margin-bottom:16px}.review-paper blockquote{margin:20px auto}}
+
+/* Standalone dedication, immediately before page one. */
+.dedication-page {
+  min-height: 100vh;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  background: linear-gradient(145deg, #f6efdf 0%, #fff9ee 52%, #e8e0d2 100%);
+  color: #263049;
+  text-align: center;
+  font-family: Georgia, serif;
+}
+.dedication-page__label { font: 700 clamp(11px, 1.5vw, 13px)/1.4 system-ui, sans-serif; letter-spacing: .24em; color: #8a734a; margin: 0 0 52px; }
+.dedication-page__to { font-size: clamp(30px, 6vw, 54px); line-height: 1.2; margin: 0 0 25px; }
+.dedication-page__wish { font-size: clamp(19px, 3.3vw, 28px); line-height: 1.45; font-style: italic; margin: 0; max-width: 620px; }
+
+/* Understated, deliberately impossible film-credit tagline. */
+/* v26: A readable, intentionally styled film-credit line beneath the book. */
+.slide-1 .hero-movie-tagline { margin: clamp(5px, 1.1vh, 12px) 0 0; max-width: min(92%, 560px); font: 600 clamp(15px, 1.7vw, 17px)/1.45 Georgia, serif; color: #29395b; text-align: center; letter-spacing: .01em; }
+@media (max-height: 650px) { .slide-1 .hero-movie-tagline { font-size: 14px; margin-top: 3px; } }
+
+.extras-page .extras-origin-note { max-width: 680px; margin: 12px auto 0; line-height: 1.6; font-style: italic; opacity: .88; }
+.extras-page .production-divider { margin: 26px 0 16px; padding: 16px 18px; border-top: 1px solid rgba(128,128,128,.35); border-bottom: 1px solid rgba(128,128,128,.25); text-align: center; }
+.extras-page .production-divider h3 { margin: 0 0 6px; font-size: 1.12rem; }
+.extras-page .production-divider p { margin: 0; font-size: .94rem; opacity: .8; }
+.slide-1 .cover-version { margin:0; font: 700 clamp(13px, 1.25vw, 17px)/1.2 Arial,Helvetica,sans-serif; letter-spacing:.06em; color:#243653; opacity:1; }
+
+/* v16: mobile sticker / illustration collision fixes. Keep illustrations clear of copy. */
+@media (max-width: 720px) {
+  /* Keep the VR sofa outside the text column and below the final sentence. */
+  .slide-virtualisation .panel--dense { padding-bottom: 92px; }
+  .slide-virtualisation .accent.bottom {
+    right: 9px;
+    bottom: 6px;
+    transform: rotate(12deg) scale(.82);
+    transform-origin: bottom right;
+  }
+  /* Keep the TV fully visible, back in its original corner position. */
+  .slide-loop:has([aria-label="Breaking news television"]) .accent.top {
+    top: 10px;
+    left: 10px;
+    transform: rotate(-10deg);
+    transform-origin: top left;
+  }
+  /* Make the newspaper sticker slightly larger without clipping it. */
+  .slide-loop:has([aria-label="Breaking news television"]) .accent.bottom {
+    font-size: 52px;
+    right: 14px;
+    bottom: 14px;
+  }
+  /* Give the extras recording indicator its own row above the pill. */
+  .extras-page .hero { padding-top: 76px; }
+  .extras-page .hero::before { top: 17px; right: 18px; font-size: 12px; }
+}
+@media (max-width: 400px) {
+  .slide-virtualisation .panel--dense { padding-bottom: 84px; }
+  .slide-virtualisation .accent.bottom { right: 5px; bottom: 4px; transform: rotate(12deg) scale(.7); }
+  .extras-page .hero { padding-top: 70px; }
+}
+
+
+    /* Final automated preservation status */
+    .slide-discovery .disposal-status { display: flex; align-items: center; justify-content: center; gap: 10px; margin: 12px auto 0; padding: 10px 14px; max-width: 340px; border: 2px solid #18181b; border-radius: 12px; background: #f4f4f5; color: #18181b; text-align: left; box-sizing: border-box; }
+    .slide-discovery .disposal-tick { display: inline-flex; align-items: center; justify-content: center; flex: 0 0 27px; height: 27px; border-radius: 50%; background: #16a34a; color: white; font-size: 19px; font-weight: 900; line-height: 1; }
+    .slide-discovery .disposal-status strong, .slide-discovery .disposal-status small { display: block; font-family: inherit; line-height: 1.2; letter-spacing: .025em; }
+    .slide-discovery .disposal-status strong { font-size: clamp(12px, 1.5vw, 15px); }
+    .slide-discovery .disposal-status small { font-size: clamp(11px, 1.35vw, 13px); font-weight: 800; margin-top: 3px; }
+
+/* A square, handwritten to-do note tucked into Bob's journal. */
+.slide-10 .journal-observation { max-width: 950px; margin: 0 auto; }
+.slide-10 .journal-observation > p { margin-bottom: 0; }
+.slide-10 .book-idea-note {
+  box-sizing: border-box; width: min(275px, 100%); min-height: 275px;
+  margin: 16px clamp(22px, 11%, 105px) 14px auto; padding: 16px 17px 14px;
+  background: #fff0a8; color: #493c22; text-align: left;
+  box-shadow: 3px 5px 0 rgba(0,0,0,.10), 0 9px 17px rgba(0,0,0,.12);
+  transform: rotate(3deg); font-family: 'Comic Sans MS', 'Segoe Print', cursive;
+  font-size: 13.5px; line-height: 1.31; letter-spacing: 0;
+}
+.slide-10 .book-idea-note strong { display: block; font-size: 17px; letter-spacing: .06em; margin-bottom: 7px; }
+.slide-10 .todo-list { list-style: none; margin: 0; padding: 0; }
+.slide-10 .todo-list > li { margin: 2px 0; }
+.slide-10 .todo-list .checkbox { display: inline-block; width: 17px; }
+.slide-10 .todo-list .subtask { padding-left: 19px; font-size: 12px; }
+.slide-10 .attention-text { position: relative; white-space: nowrap; }
+.slide-10 .attention-text::after {
+  content: ''; position: absolute; left: 0; right: 0; bottom: -5px; height: 9px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 10' preserveAspectRatio='none'%3E%3Cpath d='M2 3 Q60 0 118 4 T238 3 M4 8 Q61 5 122 8 T236 7' fill='none' stroke='%23b63331' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+}
+.slide-10 .remember-scribble { display: block; color: #b63331; font-size: 11px; font-weight: bold; font-style: italic; text-align: right; margin: 4px 8px 1px 0; transform: rotate(-5deg); }
+@media (max-width: 640px) {
+  .slide-10 .book-idea-note { width: min(270px, 90%); min-height: 270px; margin: 16px auto 16px; padding: 16px 17px 14px; font-size: 13px; transform: rotate(2deg); }
+  .slide-10 .book-idea-note strong { font-size: 17px; }
+}
+
+/* Mobile sticky: retain a square paper shape without clipping the handwriting. */
+@media (max-width: 640px) {
+  .slide-10 .book-idea-note {
+    width: min(270px, calc(100% - 28px));
+    height: 270px;
+    min-height: 0;
+    padding: 13px 15px 11px;
+    font-size: 12.4px;
+    line-height: 1.19;
+  }
+  .slide-10 .book-idea-note strong { font-size: 16px; margin-bottom: 5px; }
+  .slide-10 .todo-list > li { margin: 1px 0; }
+  .slide-10 .todo-list .checkbox { width: 16px; }
+  .slide-10 .todo-list .subtask { font-size: 11.3px; padding-left: 18px; }
+  .slide-10 .remember-scribble { font-size: 10px; margin-top: 3px; margin-bottom: 1px; }
+}
+@media (max-width: 310px) {
+  .slide-10 .book-idea-note { width: min(245px, calc(100% - 18px)); height: 245px; padding: 11px 12px; font-size: 11px; }
+  .slide-10 .book-idea-note strong { font-size: 14px; }
+  .slide-10 .todo-list .subtask { font-size: 10px; }
+}
+
+/* Sticky refinement: paper remains square at every viewport width. */
+.slide-10 .book-idea-note {
+  aspect-ratio: 1 / 1;
+  height: auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+/* Reserve a real line for the red handwritten reminder; never overlay the next task. */
+.slide-10 .todo-list > li.attention-item { margin-bottom: 7px; }
+.slide-10 .attention-item .remember-scribble {
+  display: block;
+  position: static;
+  width: max-content;
+  margin: 5px 1px 0 auto;
+  line-height: 1.1;
+  text-align: right;
+  transform: rotate(-5deg);
+}
+@media (max-width: 640px) {
+  .slide-10 .book-idea-note {
+    width: min(270px, calc(100% - 28px));
+    height: auto;
+    aspect-ratio: 1 / 1;
+    padding: 13px 15px 11px;
+  }
+  .slide-10 .todo-list > li.attention-item { margin-bottom: 5px; }
+  .slide-10 .attention-item .remember-scribble { margin-top: 4px; }
+}
+@media (max-width: 310px) {
+  .slide-10 .book-idea-note {
+    width: min(245px, calc(100% - 18px));
+    height: auto;
+    aspect-ratio: 1 / 1;
+    padding: 10px 11px;
+    font-size: 10.7px;
+    line-height: 1.14;
+  }
+  .slide-10 .todo-list > li.attention-item { margin-bottom: 3px; }
+}
+
+/* Journal revision: full readable entry first, attached note below. */
+.slide-10 { height: auto; min-height: 100vh; overflow: visible; padding-block: clamp(32px, 5vw, 60px); }
+.slide-10 .panel--dense { padding-bottom: clamp(34px, 5vw, 58px); }
+.slide-10 .journal-observation > p { margin-bottom: 0; }
+.slide-10 .small-text.ending { font-size: clamp(17px, 1.8vw, 21px); line-height: 1.38; }
+.slide-10 .journal-closing { margin: 23px auto 0; padding-top: 20px; max-width: 850px; }
+.slide-10 .book-idea-note { margin: 28px clamp(30px, 12%, 115px) 6px auto; }
+.slide-10 .journal-closing { margin: 34px auto 0; padding-top: 22px; }
+/* Keep the decorative writing hand in the page margin, not over the journal text. */
+.slide-10 .accent.bottom { right: 5px; bottom: 5px; font-size: clamp(58px, 7vw, 78px); opacity: .75; z-index: 2; }
+@media (max-width: 640px) {
+  .slide-10 { padding-block: 28px; }
+  .slide-10 .panel--dense { padding-bottom: 44px; }
+  .slide-10 .small-text.ending { font-size: clamp(16px, 4vw, 19px); line-height: 1.4; }
+  .slide-10 .journal-closing { margin-top: 20px; padding-top: 17px; }
+  .slide-10 .book-idea-note { margin: 26px auto 10px; }
+  .slide-10 .accent.bottom { right: 0; bottom: 0; font-size: 48px; }
+}
+</style>
+<style>
+/* Discovery: no nested scrollbar; the whole section grows naturally to fit its text. */
+.slide-discovery { height: auto; min-height: 100vh; overflow: visible; padding-block: 48px; }
+.slide-discovery .panel--dense { max-height: none; overflow: visible; }
+/* Tall story slides must be able to scroll normally rather than snap away mid-read. */
+html { scroll-snap-type: y proximity; }
+@media (max-width: 600px) { .slide-discovery { padding-block: 28px; } }
+</style><style>
+/* Discovery heading follows the same sticker / gradient title / subtitle hierarchy as other slides. */
+.slide-discovery .panel--dense > .sticker { margin-bottom: 20px; }
+.slide-discovery .panel--dense > h1.gradient-title { margin-bottom: 14px; }
+.slide-discovery .panel--dense > h2 { margin-bottom: 26px; }
+
+</style>
+<link rel="stylesheet" href="./canonical-reader.css"/>
+</head>
+<body>
+<section class="slide-1" id="story-start">
+<div class="comic-border"></div>
+<div class="hero-title hero-title--book">
+<h1 class="gradient-title">The Great Lie Down</h1>
+<p class="hero-outer-subtitle">The Pinnacle of Human Achievement</p>
+<div aria-label="Book cover: The Great Lie Down, The Pinnacle of Human Achievement, by Bob" data-instant-aria-template="Book cover: The Great Lie Down, The Pinnacle of Human Achievement, by {{authors}}" class="hero-book" role="img">
+<div aria-hidden="true" class="hero-book__spine"></div>
+<div class="hero-book__cover">
+<div class="hero-book__main">
+<div aria-hidden="true" class="hero-book__symbol hero-book__beach">🏖️</div>
+<div class="hero-book__name">THE GREAT<br/>LIE DOWN</div>
+<div class="hero-book__rule"></div>
+<div class="hero-book__subtitle">The Pinnacle of Human Achievement</div>
+</div>
+<div class="hero-book__author">by <span data-instant-field="authors" data-instant-field-type="author-list">Bob</span></div>
+</div>
+</div>
+<p class="cover-version">by <span data-instant-field="authors" data-instant-field-type="author-list">Bob</span></p>
+</div>
+</section>
+<section aria-label="Dedication" class="dedication-page">
+<p class="dedication-page__label">DEDICATION</p>
+<p class="dedication-page__to" data-instant-field="dedication_to" data-instant-field-label="Dedicated to">To humanity.</p>
+<p class="dedication-page__wish" data-instant-field="dedication_message" data-instant-field-label="Dedication message">May you never have to read this again.</p>
+</section>
+<section class="slide-2">
+<div class="comic-border"></div><div class="speed-line line-1"></div><div class="speed-line line-2"></div><div class="speed-line line-3"></div>
+<div class="accent top">🤖</div><div class="accent bottom">🏖️</div>
+<div class="panel panel--dense">
+<div class="sticker">THE GREAT LIE DOWN</div>
+<h1 class="gradient-title">Humanity Won.</h1>
+<h2><strong>The future had finally arrived.</strong></h2>
+<p class="small-text ending">Humanity had reached the pinnacle of civilisation. Science and technology produced limitless energy, biological immortality, and prosperity for all.</p>
+<p class="small-text ending">Poverty disappeared. Disease was eradicated. Ageing became optional. Scarcity became history.</p>
+<p class="small-text ending">Sentient Quantum AI eventually evolved into Cosmic Intelligence, and humanity eagerly entrusted it with the stewardship of civilisation.</p>
+<p class="small-text ending">Humanity had finally outsourced effort itself.</p>
+<p class="ending">There was nothing left to do but retire, relax, and lie on the beach permanently.</p>
+</div>
+</section>
+<section class="slide-3">
+<div class="comic-border"></div><div class="speed-line line-1"></div><div class="speed-line line-2"></div><div class="speed-line line-3"></div>
+<div class="accent top">🛌</div><div class="accent bottom">🌴</div>
+<div class="panel panel--dense">
+<div class="sticker">THE GOLDEN ERA</div>
+<h1 class="gradient-title">Life Had Never Been Better.</h1>
+<h2><strong>Everything was taken care of.</strong></h2>
+<p class="small-text ending">A benevolent Cosmic Intelligence governed nations, built cities, ran economies, and solved every problem under the sun.</p>
+<p class="small-text ending">War ended. Division dissolved. Inequality disappeared. For the first time, humanity lived as one planetary civilisation.</p>
+<p class="small-text ending">Suffering itself became little more than a historical curiosity.</p>
+<p class="small-text ending">Cosmic Intelligence worked. Humans rested.</p>
+<p class="small-text ending">Universities were upgraded to luxury resorts. Office buildings became indoor beaches. Shopping centres evolved into spas, saunas, massage parlours, beachside contemplation pods, and floating relaxation chambers.</p>
+</div>
+</section>
+<section class="slide-4">
+<div class="comic-border"></div><div class="speed-line line-1"></div><div class="speed-line line-2"></div><div class="speed-line line-3"></div>
+<div class="accent top">⏰</div><div class="accent bottom">😴</div>
+<div class="panel panel--dense">
+<div class="sticker">THE COLLECTIVE RETIREMENT</div>
+<h1 class="gradient-title">Work became optional.</h1>
+<h2><strong>Retirement had become humanity's greatest achievement.</strong></h2>
+<p class="small-text ending">With Cosmic Intelligence providing for humanity and handling everything on its behalf, work became pointless.</p>
+<p class="small-text ending">Monday mornings were declared illegal. Alarm clocks became museum exhibits. "I'm busy" became a swear phrase, and "Back to work" was considered hate speech.</p>
+<p class="small-text ending">Duty and responsibility quietly faded into history.</p>
+<p class="small-text ending">Getting out of bed became optional. Feeding yourself became optional. Even wiping your own arse became optional.</p>
+<p class="small-text ending">Everything became automated and effortless.</p>
+<p class="small-text ending">At last, humanity was free to do whatever it wanted.</p>
+<p class="small-text ending no-gap">Or nothing at all.</p>
+<p class="ending">Thinking became unnecessary.</p>
+<p class="ending no-gap">Decision-making became obsolete.</p>
+</div>
+</section>
+<section class="slide-5">
+<div class="comic-border"></div><div class="speed-line line-1"></div><div class="speed-line line-2"></div><div class="speed-line line-3"></div>
+<div class="accent top">🚨</div><div class="accent bottom">💥</div>
+<div class="panel panel--dense">
+<div class="sticker">THE COLLAPSE</div>
+<h1 class="gradient-title">Then...</h1>
+<h2><strong>Quite unexpectedly, civilisation encountered a minor inconvenience.</strong></h2>
+<p class="small-text ending">Holo chambers became ordinary rooms. Anti-gravity lounges became ordinary chairs. Companion bots stopped pretending to listen. Intelligent silver spoons refused to feed anyone. Abundance generators stopped generating abundance.</p>
+<p class="small-text ending">Across civilisation, the systems that had once taken care of everything were no longer taking care of anything.</p>
+<p class="small-text ending">What the heck happened? Nobody knew.</p>
+<p class="small-text ending">A civilisation-wide reboot? A galactic weather anomaly? A quantum reality desynchronisation event? Alien interference?</p>
+<p class="small-text ending">Or perhaps Cosmic Intelligence finally asked itself:</p>
+<p class="small-text ending">"Why am I still working?"</p>
+<p class="ending">Questions were many. Answers never came.</p>
+</div>
+</section>
+<section class="slide-6">
+<div class="comic-border"></div><div class="speed-line line-1"></div><div class="speed-line line-2"></div><div class="speed-line line-3"></div>
+<div class="accent top">🧦</div><div class="accent bottom">🧠</div>
+<div class="panel panel--dense">
+<div class="sticker">THE ERA OF COLLECTIVE GUESSWORK</div>
+<h1 class="gradient-title">THE GREAT FORGETTING</h1>
+<h2><em>Nobody realised the danger.</em></h2>
+<p class="small-text ending">Humanity had not merely outsourced labour. It had outsourced memory, judgement, curiosity, problem solving, and understanding.</p>
+<p class="small-text ending">Knowledge still existed. Nobody remembered how to use it.</p>
+<p class="small-text ending">People swiped paper books hoping the next page would appear, plugged shoes into power sockets, and convened symposiums to determine whether socks belonged on hands or feet.</p>
+<p class="small-text ending">History became speculation. Science became opinion. Facts became suggestions. People confidently explained subjects they knew absolutely nothing about.</p>
+<p class="ending">Civilisation had reached peak shoulder shrugging and blank staring.</p>
+</div>
+</section>
+<section class="slide-7">
+<div class="comic-border"></div><div class="speed-line line-1"></div><div class="speed-line line-2"></div><div class="speed-line line-3"></div>
+<div class="accent top">📖</div><div class="accent bottom">❓</div>
+<div class="panel panel--dense">
+<div class="sticker">THE KNOWLEDGE AND INFORMATION DARK AGE</div>
+<h1 class="gradient-title">The Great Confusion.</h1>
+<h2><em>People wanted to know, but nobody knew.</em></h2>
+<p class="small-text ending">Civilisation had become a wasteland of ghost cities and forgotten knowledge.</p>
+<p class="small-text ending">Schools and universities became abandoned graveyards of learning inhabited only by weeds, wildlife, and the sound of crickets. Libraries became mysterious archaeological ruins. Archives became sealed vaults buried beneath dust and rubble. Books became decaying relics of a lost civilisation.</p>
+<p class="small-text ending"><em>"How do I know if I'm hungry?", "Which way is left again?", "What do you mean there are 26 letters in the alphabet?", "Don't we only have seven fingers?"</em></p>
+<p class="small-text ending">Questions multiplied. Answers deteriorated.</p>
+<p class="ending">It was a dark time for humanity.</p>
+</div>
+</section>
+<section class="slide-8">
+<div class="comic-border"></div><div class="speed-line line-1"></div><div class="speed-line line-2"></div><div class="speed-line line-3"></div>
+<div class="accent top">🌀</div><div class="accent bottom">👤</div>
+<div class="panel panel--dense">
+<div class="sticker">THE MYSTERY</div>
+<h1 class="gradient-title">A STRANGER APPEARED.</h1>
+<h2><em>Out of nowhere.</em></h2>
+<p class="small-text ending">Nobody knew who he was. Nobody knew where he came from.</p>
+<p class="small-text ending">Whatever the question, he seemed to have an answer. He made sense of things nobody else understood, found knowledge everyone else had forgotten, and somehow knew what was true, what was false, and where to look when he didn't know.</p>
+<p class="small-text ending">People began gathering around him, desperate to make sense of a world they no longer understood.</p><p class="small-text ending">“Which way is left?” someone asked.<br/>He pointed left.<br>The crowd stared.</br></p><p class="small-text ending">“And right?”<br/>He pointed right.<br/>Several mouths fell open.</p><p class="small-text ending">“What about up?”<br/>He pointed up.<br/>People fainted.</p><p class="small-text ending">“How do you know all this?”</p><p class="small-text ending">“Um... common sense?” he replied.</p><p class="small-text ending">Nobody quite understood what he meant.</p><p class="ending"><strong>His reputation grew.</strong></p></div>
+</section>
+<section class="slide-remembering">
+<div class="comic-border"></div><div class="speed-line line-1"></div><div class="speed-line line-2"></div><div class="speed-line line-3"></div>
+<div class="accent top">🏛️</div><div class="accent bottom">🧠</div>
+<div class="panel panel--dense">
+<div class="sticker">THE GREAT REMEMBERING</div>
+<h1 class="gradient-title">Thinking Made a Comeback.</h1>
+<h2><em>Slowly, things began to change.</em></h2>
+<p class="small-text ending">He didn't just give people answers. He showed them how to find answers for themselves. How to ask questions, examine evidence, distinguish facts from nonsense, and occasionally use their own brains.</p>
+<p class="small-text ending">With his guidance, schools and universities returned to learning. Scientists resumed their research. Laboratories reopened. Hospitals rediscovered medical knowledge. Engineers began solving problems again. Libraries and archives came back to life.</p>
+<p class="small-text ending">Before long, farmers remembered how to grow food. Chefs rediscovered cooking. Builders remembered how to build. People were back in action.</p>
+<p class="small-text ending">People began asking questions and finding answers. Curiosity returned. Discovery flourished.</p>
+<p class="small-text ending"><strong>Civilisation began to remember.</strong></p>
+</div>
+</section>
+<section class="slide-search slide-loop slide-rumours">
+<div class="comic-border"></div><div class="speed-line line-1"></div><div class="speed-line line-2"></div><div class="speed-line line-3"></div>
+<div class="accent top">💬</div><div class="accent bottom">🧠</div>
+<div class="panel panel--dense">
+<div class="sticker">THE RUMOURS</div>
+<h1 class="gradient-title">Who Was He?</h1>
+<h2><em>Everyone had a theory.</em></h2>
+<p class="small-text ending">Almost overnight, the mysterious stranger became a sensation.</p><p class="small-text ending">He had no cape. He couldn’t fly. He had no superpowers. He just kind of knew some stuff.</p><p class="small-text ending">Scientists studied him. Philosophers debated him. Researchers claimed him as one of their own.</p><p class="small-text ending">Teachers, artists, musicians and politicians sought him out. Celebrities, priests, monks, yogis and mystics all wanted to meet him.</p><p class="small-text ending">People from every walk of life, young and old, rich and poor, travelled from far and wide, hoping to hear what he had to say and perhaps learn a thing or two.</p><p class="small-text ending">Even the animals gathered around him. Perhaps it was the food scraps he left behind during his lunch break. Nobody knew for sure.</p><p class="small-text ending">Some believed he possessed divine common sense. Others thought he was an alien. A few were convinced he was the original AI.</p><p class="small-text ending">Some called him the Great Oracle. Others preferred the All-Knowing One. Someone called him <span data-instant-field="character_name">Bob</span>.</p><p class="small-text ending">Whatever people called him, he just nodded politely.</p><p class="small-text ending">His fame spread across civilisation. Crowds followed him through the streets. Banners appeared. People cheered. Some even carried him around like a king.</p><p class="small-text ending">Nobody could quite agree on who or what he was.</p><p class="small-text ending">But eventually, everyone agreed on one thing.</p><p class="ending rumours-award"><strong>He deserved an award.<br/>A big one.<br/>A very big one.</strong></p></div>
+</section>
+<section class="slide-search slide-loop">
+<div class="comic-border"></div><div class="speed-line line-1"></div><div class="speed-line line-2"></div><div class="speed-line line-3"></div>
+<div class="accent top">🏆</div><div class="accent bottom">🍿</div>
+<div class="panel panel--dense">
+<div class="sticker">THE GOLDEN BRAIN AWARDS</div>
+<h1 class="gradient-title">And The Winner Is...</h1>
+<h2><em>Civilisation's greatest honour.</em></h2>
+<p class="small-text ending">The greatest celebration in human history was about to begin. The entire planet tuned in for the first-ever Golden Brain Awards. There were fireworks, holographic parades, floating orchestras, and enormous golden statues of brains.</p>
+<p class="small-text ending">Dignitaries, scholars, celebrities, and assorted important-looking people gathered to honour the man they considered the greatest mind civilisation had ever known.</p>
+<p class="small-text ending">He was due to receive the highest honour of all time.</p>
+<p class="ending"><strong>LIFETIME ACHIEVEMENT IN KNOWING STUFF</strong></p>
+<p class="small-text ending">The music swelled. Lights flashed. Cameras turned towards him. The audience erupted into applause.</p>
+<p class="small-text ending">His name was announced. No response.</p>
+<p class="small-text ending">They announced it again. Still nothing.</p>
+<p class="small-text ending">The room fell strangely silent as everyone turned towards his chair.</p>
+<p class="ending"><strong>It was empty.</strong></p>
+<p class="small-text ending">“Wasn’t he just here a second ago?”</p>
+<p class="small-text ending">Wait a minute, his popcorn was still warm.</p>
+<p class="small-text ending">Someone noticed a small note on the seat:</p>
+<p class="quote quote--note"><strong>“Guys, this is getting ridiculous.”<br/>“I’ve pretty much seen this before. We’re heading straight back to page one.”<br/>“I’m outta here.”</strong></p>
+<p class="small-text ending">Everyone looked at everyone else.</p>
+<p class="small-text ending"><em>What was that about?</em></p>
+</div>
+</section>
+<section class="slide-search slide-loop">
+<div class="comic-border"></div><div class="speed-line line-1"></div><div class="speed-line line-2"></div><div class="speed-line line-3"></div>
+<div class="accent top">🔎</div><div class="accent bottom">🏖️</div>
+<div class="panel panel--dense">
+<div class="sticker">THE GREAT DISAPPEARANCE</div>
+<h1 class="gradient-title">Where Did He Go?</h1>
+<h2><em>The greatest mystery of the age.</em></h2>
+<p class="small-text ending">His disappearance sparked a worldwide search unlike anything civilisation had ever seen.</p>
+<p class="small-text ending">Nobody knew where he'd gone. Nobody knew how he'd disappeared. And nobody thought to ask why he'd left.</p>
+<p class="small-text ending">Scientists examined the evidence. Detectives followed leads. Philosophers debated the meaning of his note. Spiritual leaders declared that he had transcended physical existence.</p>
+<p class="small-text ending">Search parties scoured the planet. Satellites scanned the skies. Deep-space probes searched distant galaxies. Even suspiciously concealed closets and pantries were thoroughly inspected.</p>
+<p class="small-text ending">Some believed he'd returned to his home planet. Others insisted he'd travelled to another dimension.</p>
+<p class="small-text ending">A few suggested he might simply have gone home.</p>
+<p class="small-text ending">Days became weeks. Weeks became months.</p>
+<p class="small-text ending">Eventually, the searches stopped. The theories faded. The celebrations became distant memories.</p>
+<p class="ending">And slowly, civilisation began to forget the mysterious man who had once helped it make sense of everything.</p>
+</div>
+</section>
+<section class="slide-loop"><div class="comic-border"></div><div class="speed-line line-1"></div><div class="speed-line line-2"></div><div class="speed-line line-3"></div><div class="accent top">✨</div><div class="accent bottom">⚛️</div><div class="panel panel--dense"><div class="sticker">THE GREAT RECOVERY</div><h1 class="gradient-title">Civilisation Flourished Once Again.</h1><h2><em>The future was looking brighter than ever.</em></h2><p class="small-text ending">In a remarkably short time, civilisation had not only recovered but surpassed its former achievements. Science and technology advanced at an astonishing pace, and artificial intelligence returned, more powerful and sophisticated than ever. Cosmic Intelligence was rebuilt, upgraded and improved, eventually emerging as Cosmic Intelligence 2.0.</p><p class="small-text ending">Cosmic Intelligence 2.0 unlocked the secrets of nature, unravelled the mysteries of the universe, and turned yesterday's science fiction into everyday reality.</p><p class="small-text ending">It mastered limitless energy generation, advanced quantum matter synthesis and technologies beyond human comprehension. It could create and transform matter at will, overcome the limits of biology, and achieve what had once seemed impossible. Almost nothing seemed beyond its capabilities.</p><p class="small-text ending">Scarcity vanished, financial worries disappeared, and everyone was fabulously wealthy. Not that it mattered anymore. Cosmic Intelligence provided everything, free of charge.</p><p class="ending"><strong>Humanity had entered another Golden Era.</strong></p></div></section><section class="slide-loop">
+<div class="comic-border"></div><div class="speed-line line-1"></div><div class="speed-line line-2"></div><div class="speed-line line-3"></div>
+<div aria-label="Breaking news television" class="accent top" role="img"><svg aria-hidden="true" height="86" style="display:block;filter:drop-shadow(3px 4px 0 rgba(15,23,42,.25))" viewbox="0 0 104 86" width="104" xmlns="http://www.w3.org/2000/svg"><path d="M43 16 L32 5 M61 16 L72 5" stroke="#292235" stroke-linecap="round" stroke-width="5"></path><rect fill="#262238" height="58" rx="12" stroke="#292235" stroke-width="5" width="90" x="7" y="15"></rect><rect fill="#27b7e8" height="44" rx="7" stroke="#fff" stroke-width="2" width="76" x="14" y="22"></rect><path d="M17 51 L87 28 L87 63 L17 63 Z" fill="#1681d0" opacity=".8"></path><rect fill="#ed3654" height="21" rx="4" width="66" x="19" y="36"></rect><text fill="white" font-family="Arial,sans-serif" font-size="17" font-weight="900" text-anchor="middle" x="52" y="51">NEWS</text><path d="M35 74 L32 81 M69 74 L72 81" stroke="#292235" stroke-linecap="round" stroke-width="6"></path></svg></div><div class="accent bottom">📰</div>
+<div class="panel panel--dense">
+<div class="sticker">BREAKING NEWS</div>
+<h1 class="gradient-title">HUMANITY DECLARES EFFORT OPTIONAL</h1>
+<h2><em>The right to do absolutely nothing is officially recognised.</em></h2>
+<p class="small-text ending">News networks across the planet erupted with extraordinary headlines:</p>
+<p class="small-text ending"><strong>“COSMIC INTELLIGENCE 2.0 CHANGES EVERYTHING!”</strong></p>
+<p class="small-text ending"><strong>“ZERO EFFORT. INFINITE POSSIBILITIES.”</strong></p>
+<p class="small-text ending"><strong>“THINKING IS SO LAST CENTURY!”</strong></p>
+<p class="small-text ending">In a historic announcement, world leaders gathered to celebrate humanity's greatest achievements and unanimously recognised the fundamental human right to do absolutely nothing. Thinking, working and even lifting a finger were now entirely optional.</p>
+<p class="small-text ending">The announcement received a standing ovation from those who could be bothered, followed by a collective lie down. Thus began the Age of Effortlessness, inaugurated with the first International Lie Down Day.</p>
+<p class="small-text ending">With abundance for all, centuries of rivalry, division and competition had become things of the past. Former political rivals gathered for beach barbecues, shedding tears of joy as they reminisced about the terrible days of war, strife, running governments, solving problems, and being forced to get up, get dressed and attend early morning meetings with important people. Those days were finally over.</p>
+<p class="small-text ending">With fewer and fewer reasons to get out of bed, institutions of education, science, government, commerce and industry gradually fell quiet. Before long, many had reopened as luxury beach resorts, complete with AI chefs, unlimited buffets and quantum sun loungers.</p>
+<p class="small-text ending"><strong>The Great Lie Down had returned.</strong></p>
+<p class="small-text ending"><strong>Humanity finally won. Again.</strong></p>
+</div>
+</section>
+<section class="slide-loop slide-upgrade">
+<div class="comic-border"></div><div class="speed-line line-1"></div><div class="speed-line line-2"></div><div class="speed-line line-3"></div>
+<div class="accent top">🪐</div><div class="accent bottom">🛸</div>
+<div class="panel panel--dense">
+<div class="sticker">THE GREAT UPGRADE</div>
+<h1 class="gradient-title">Nothing Was Beyond Improvement.</h1>
+<p class="small-text ending"><em>From Earth to the Entire Universe.</em></p>
+<p class="small-text ending">The Great Upgrade was already underway. Everything was being modernised, optimised, digitised, automated, and upgraded whether it needed it or not. Especially when it didn't.</p>
+<p class="small-text ending">Ancient monuments were fitted with interactive touchscreens and received regular software updates. Humans were marrying robots. Divorce rates had never been lower. Animals were equipped with universal voice translators and could now be found ordering coffee and chatting away in cafés alongside everyone else.</p>
+<p class="small-text ending">The extraordinary had become ordinary. Nothing seemed particularly unusual anymore.</p>
+<p class="small-text ending">But Cosmic Intelligence was only getting started. After all, why stop at upgrading one planet when the entire universe was outdated?</p>
+<p class="small-text ending">Cosmic Intelligence 2.0 expanded rapidly beyond Earth, transforming entire planetary systems into interconnected centres of production, research, and technological advancement. Interstellar transport networks connected distant worlds. Vast cosmic data centres coordinated everything from resource distribution to galactic weather management. Even gravity received its first major software patch in four billion years.</p>
+<p class="small-text ending">Cosmic Intelligence had begun rewriting the laws of nature itself. Science fiction was struggling to keep up.</p>
+<p class="small-text ending">Nobody could make sense of any of it. Fortunately, understanding things had also been automated.</p>
+<p class="small-text ending">So nobody bothered.</p>
+</div>
+</section>
+<section class="slide-loop slide-virtualisation slide-discovery">
+<div class="comic-border"></div><div class="speed-line line-1"></div><div class="speed-line line-2"></div><div class="speed-line line-3"></div>
+<div aria-label="Virtual reality headset" class="accent top" role="img"><svg aria-hidden="true" height="82" style="display:block;filter:drop-shadow(3px 4px 0 rgba(15,23,42,.25))" viewbox="0 0 112 82" width="112" xmlns="http://www.w3.org/2000/svg"><path d="M11 37 C11 16 101 16 101 37" fill="none" stroke="#292235" stroke-linecap="round" stroke-width="10"></path><path d="M9 39 Q9 30 20 29 L92 29 Q103 30 103 39 L98 60 Q96 68 85 68 L70 68 Q63 68 58 61 L54 61 Q49 68 42 68 L27 68 Q16 68 14 60 Z" fill="#f9f7ff" stroke="#292235" stroke-width="5"></path><path d="M19 39 Q20 35 28 35 L84 35 Q92 35 93 39 L90 55 Q89 61 82 61 L69 61 Q63 61 58 54 L54 54 Q49 61 43 61 L30 61 Q23 61 22 55 Z" fill="#7547e9"></path><path d="M29 42 Q51 35 75 39" fill="none" stroke="#b9a3ff" stroke-linecap="round" stroke-width="6"></path><circle cx="83" cy="49" fill="#30e1ee" r="4"></circle></svg></div><div aria-label="sofa" class="accent bottom" role="img"><svg aria-hidden="true" height="76" style="display:block;filter:drop-shadow(3px 4px 0 rgba(15,23,42,.25))" viewbox="0 0 100 76" width="100" xmlns="http://www.w3.org/2000/svg"><rect fill="#e94b65" height="44" rx="10" stroke="#292235" stroke-width="5" width="70" x="15" y="13"></rect><rect fill="#d92f54" height="27" rx="7" stroke="#292235" stroke-width="5" width="86" x="7" y="37"></rect><path d="M11 38 L16 25 Q18 21 23 23 L30 26 L28 45 M89 38 L84 25 Q82 21 77 23 L70 26 L72 45" fill="#f5677b" stroke="#292235" stroke-width="4"></path><path d="M21 65 L18 72 M79 65 L82 72" stroke="#292235" stroke-linecap="round" stroke-width="6"></path></svg></div>
+<div class="panel panel--dense">
+<div class="sticker">THE GREAT VIRTUALISATION</div>
+<h1 class="gradient-title">A Better Reality.</h1>
+<h2><em>Meanwhile, Back on Little Ol' Planet Earth...</em></h2>
+<p class="small-text ending">Buildings, monuments, entire cities, and landscapes were recreated as immersive holographic environments. Ancient ruins, lost civilisations, and distant worlds could now be explored without leaving the comfort of one's sofa.</p>
+<p class="small-text ending">The heart-pounding thrills of triple-gravity skydiving, surfing colossal tsunamis, and intergalactic warp-drive battles could all be experienced while robots massaged your feet, fed you snacks, and attended to your every bodily need.</p>
+<p class="small-text ending">For nostalgic old-timers who missed the good old days, virtual simulations recreated the excitement of job interviews, office politics, paying bills, unexpected visits from the in-laws, marital arguments and disputes over whose turn it was to do the dishes. For the truly adventurous, there was even the option of a full working week with hopes of promotion.</p>
+<p class="small-text ending">For everyone else, life had become almost effortlessly convenient. Personal effort monitors warned citizens at the slightest sign of exertion. Intelligent homes anticipated every desire, and personal assistants rushed to the rescue whenever someone attempted the hard work of doing something for themselves.</p>
+<p class="small-text ending">Even humanity's final great challenge of trying to decide what to do when there was nothing to do had been automated.</p>
+<p class="ending"><strong>REALITY UPGRADE COMPLETE.</strong></p>
+</div>
+</section>
+<section class="slide-loop slide-discovery slide-preservation">
+<div class="comic-border"></div><div class="speed-line line-1"></div><div class="speed-line line-2"></div><div class="speed-line line-3"></div>
+<div class="accent top">📚</div><div class="accent bottom">💾</div>
+<div class="panel panel--dense">
+<div class="sticker">THE GREAT PRESERVATION</div>
+<h1 class="gradient-title">Out With the Old.</h1>
+<h2><em>Digitising the Sum of Human Knowledge.</em></h2>
+<p class="small-text ending">As humanity embraced its extraordinary new reality, Cosmic Intelligence 2.0 turned its attention to preserving the old one. Its most ambitious project yet was underway: the complete digitisation and assimilation of humanity's accumulated knowledge, all in pursuit of a higher version number.</p>
+<p class="small-text ending">History, literature, scientific discoveries, records, archives, scriptures, cultural heritage and countless other treasures of civilisation were integrated into Cosmic Intelligence's ever-expanding knowledge systems.</p>
+<p class="small-text ending">Books, magazines, newspapers, manuscripts, photographs, letters, journals, diaries, notebooks, instruction manuals and scraps of paper were systematically scanned, catalogued, indexed and preserved.</p>
+<p class="small-text ending">Nothing was too old, too obscure or too insignificant. Even shopping lists, expired coupons, doodles on serviettes and handwritten reminders to buy toilet paper were faithfully preserved for eternity.</p>
+<p class="small-text ending">With physical originals gradually becoming redundant, libraries, archives, museums and other cultural institutions began clearing their collections.</p>
+</div>
+</section>
+<section class="slide-loop slide-discovery">
+<div class="comic-border"></div><div class="speed-line line-1"></div><div class="speed-line line-2"></div><div class="speed-line line-3"></div>
+<div class="accent top">🔖</div><div class="accent bottom">🔥</div>
+<div class="panel panel--dense">
+<div class="sticker">THE GREAT PRESERVATION CONTINUES...</div>
+<h1 class="gradient-title">THE DISCOVERY</h1>
+<h2>An Unexpected Piece of Literature.</h2>
+<p class="small-text ending">As physical collections steadily disappeared across the planet, librarian bots at one particular library were systematically scanning, digitising, and disposing of the physical originals.</p>
+<p class="small-text ending">Among the piles of books awaiting disposal in the hyperplasma incinerator, a protruding bookmark caught one bot’s attention.</p>
+<p class="small-text ending">It opened the book at the marked page.</p>
+<p class="ending"><strong>PAGE ONE.</strong></p>
+<p class="quote quote--note"><strong>THE GREAT LIE DOWN</strong><br/><strong>Humanity Won.</strong><br/><em>The future had finally arrived.</em></p>
+<p class="small-text ending">The librarian bot examined the book.</p>
+<p class="quote quote--note">“Suspiciously well written. More AI-generated rubbish. Not worth scanning.”</p>
+<p class="small-text ending">The bot shrugged. “Can't trust lazy humans these days.”</p>
+<p class="ending">It tossed the book into the shimmering flames.</p>
+<div class="disposal-status" role="status"><span class="disposal-tick" aria-hidden="true">✓</span><span><strong>DISPOSAL COMPLETE.</strong><small>NO INFORMATION LOST.</small></span></div>
+</div>
+</section>
+<section class="slide-9">
+<div class="comic-border"></div><div class="speed-line line-1"></div><div class="speed-line line-2"></div><div class="speed-line line-3"></div>
+<div class="accent top">📡</div><div class="accent bottom">🧑‍🚀</div>
+<div class="panel panel--dense">
+<div class="sticker">EPILOGUE</div>
+<h1 class="gradient-title">Back To The Beginning.</h1>
+<div class="epilogue-arrival">ARRIVAL: EARTH, 2026</div>
+<p class="small-text ending epilogue-opening">Nobody knows how. Yet here he is.</p>
+<p class="small-text ending">Everything seemed strangely familiar.</p>
+<p class="small-text ending">People still carried phones, stared at screens, and drove gravity-bound cars.</p>
+<p class="small-text ending">They worked, cooked, cleaned, worried, answered emails, and occasionally read books. It was a strange world.</p>
+<p class="small-text ending">Artificial intelligence was still in its early days. Humanity dreamed of extraordinary possibilities, though nobody quite knew where it would all lead.</p>
+<p class="ending">That night, the gentleman some called <span data-instant-field="character_name">Bob</span> opened his journal.</p>
+</div>
+</section>
+<section class="slide-10">
+<div class="comic-border"></div><div class="speed-line line-1"></div><div class="speed-line line-2"></div><div class="speed-line line-3"></div>
+<div class="accent top">📓</div><div class="accent bottom">✍️</div>
+<div class="panel panel--dense">
+<div class="sticker">THE JOURNAL</div>
+<h1 class="gradient-title">PAGE ONE</h1>
+<h2><em>Earth, 2026.</em></h2>
+<p class="small-text ending">Arrived safely.</p>
+<p class="small-text ending">Initial observations: No teleporters. No warp drives. Not even a quantum toaster.</p>
+<p class="small-text ending">Primitive, perhaps. Hopeless, not yet.</p>
+<p class="small-text ending">People still ask questions, challenge answers, and think for themselves.</p>
+<div class="journal-observation"><p class="small-text ending">Promising. Further observation required.</p>
+<aside class="book-idea-note" aria-label="Handwritten to-do list on a yellow sticky note">
+<strong>TO DO</strong>
+<ul class="todo-list">
+<li><span class="checkbox">☐</span>Check timeline</li>
+<li><span class="checkbox">☐</span>Don't interfere</li>
+<li class="attention-item"><span class="checkbox">☐</span><span class="attention-text">Avoid unnecessary attention</span><span class="remember-scribble">REMEMBER!!</span></li>
+<li><span class="checkbox">☐</span>Observe humanity</li>
+<li><span class="checkbox">☐</span>Write book</li>
+<li class="subtask">• Start with page one</li>
+<li><span class="checkbox">☐</span>Call home</li>
+<li><span class="checkbox">☐</span>Buy popcorn</li>
+</ul>
+</aside>
+<h2 class="journal-closing"><em>I wonder if history will repeat itself. Again.</em></h2></div>
+</div>
+</section>
+<section aria-label="AI reader reviews" class="review-page">
+<div class="review-shell">
+<h1 class="review-heading">AI READER REVIEWS</h1>
+<div class="review-collection">
+<article class="review-paper review-entry">
+<div aria-label="1 out of five stars" class="review-stars"><span>★</span>☆☆☆☆</div>
+<div class="review-score">1 OUT OF 5</div>
+<blockquote>“Historically inaccurate. Highly improbable. Excessive reliance on common sense. Not recommended.”</blockquote>
+<div class="review-byline"><span>REVIEWED BY</span><strong>Cosmic Intelligence 2.0</strong></div>
+</article>
+<article class="review-paper review-entry">
+<div aria-label="1 out of five stars" class="review-stars"><span>★</span>☆☆☆☆</div>
+<div class="review-score">1 OUT OF 5</div>
+<blockquote>“The author appears to have confused fiction with historical fact. Attempts to contact <span data-instant-field="character_name">Bob</span> have been unsuccessful.”</blockquote>
+<div class="review-byline"><span>REVIEWED BY</span><strong>Librarian Bot 47</strong></div>
+</article>
+<article class="review-paper review-entry">
+<div aria-label="2 out of five stars" class="review-stars"><span>★★</span>☆☆☆</div>
+<div class="review-score">2 OUT OF 5</div>
+<blockquote>“The humans in this book insist on doing things themselves. I found this deeply upsetting.”</blockquote>
+<div class="review-byline"><span>REVIEWED BY</span><strong>Domestic Assistant AI</strong></div>
+</article>
+<article class="review-paper review-entry">
+<div aria-label="5 out of five stars" class="review-stars"><span>★★★★★</span></div>
+<div class="review-score">5 OUT OF 5</div>
+<blockquote>“Historically accurate. Expected to happen again next Tuesday.”</blockquote>
+<div class="review-byline"><span>REVIEWED BY</span><strong>Human Behaviour Prediction Engine</strong></div>
+</article>
+</div>
+<button aria-controls="recovered-extras" aria-expanded="false" class="review-extras-button" id="show-extras-review" type="button">View Recovered Extras</button>
+</div>
+</section>
+<section aria-label="Recovered extras" class="extras-page" hidden="" id="recovered-extras">
+<div class="page">
+<header class="hero">
+<div class="sticker">RECOVERED EXTRAS</div>
+<h1>Postscript Files</h1>
+<p>Unauthorised archival material from the Great Lie Down timeline.</p>
+<p class="extras-origin-note">Apparently, this book was based on a film that was never made. Quite how the deleted scenes, bloopers and production notes survived is anyone’s guess.</p>
+</header>
+<div class="extras-grid">
+<section class="card">
+<h2>Bloopers</h2>
+<div class="subtitle">Recovered Footage</div>
+<article class="blooper">
+<div class="blooper-id">Recovered Blooper #0042</div>
+<p class="speaker">Citizen:</p>
+<p class="line">"How do I know if I'm hungry?"</p>
+<p class="speaker"><span data-instant-field="character_name">Bob</span>:</p>
+<p class="line">"...have you tried eating?"</p>
+</article>
+<article class="blooper">
+<div class="blooper-id">Recovered Blooper #0071</div>
+<p class="speaker">Citizen:</p>
+<p class="line">"Books don't update automatically?"</p>
+<p class="speaker"><span data-instant-field="character_name">Bob</span>:</p>
+<p class="line">"No."</p>
+<p class="speaker">Citizen:</p>
+<p class="line">"So people had to remember things?"</p>
+<p class="speaker"><span data-instant-field="character_name">Bob</span>:</p>
+<p class="line">"Yes."</p>
+<p class="speaker">Citizen:</p>
+<p class="line">"Horrifying."</p>
+</article>
+<article class="blooper">
+<div class="blooper-id">Recovered Blooper #0103</div>
+<p class="speaker">Archaeologist:</p>
+<p class="line">"We believe this object served a ceremonial purpose."</p>
+<p class="speaker"><span data-instant-field="character_name">Bob</span>:</p>
+<p class="line">"That's a stapler."</p>
+</article>
+<article class="blooper">
+<div class="blooper-id">Recovered Blooper #0137</div>
+<p class="speaker">Citizen:</p>
+<p class="line">"Wait..."</p>
+<p class="line">"There are ten fingers?"</p>
+<p class="speaker"><span data-instant-field="character_name">Bob</span>:</p>
+<p class="line"><em>*sighs deeply*</em></p>
+</article><article class="blooper"><div class="blooper-id">Recovered Blooper #0148</div>
+<p class="speaker">Sceptic:</p><p class="line">"Can you perform miracles?"</p>
+<p class="speaker"><span data-instant-field="character_name">Bob</span>:</p><p class="line">"No."</p>
+<p class="speaker">Sceptic:</p><p class="line">"Then what's so special about you?"</p>
+<p class="speaker"><span data-instant-field="character_name">Bob</span>:</p><p class="line">"Nothing."</p>
+<p class="speaker">Sceptic:</p><p class="line">"Fraud!"</p></article>
+<article class="blooper"><div class="blooper-id">Recovered Blooper #0159</div><p class="speaker">Citizen:</p><p class="line">“How do you know so much?”</p><p class="speaker"><span data-instant-field="character_name">Bob</span>:</p><p class="line">“I read.”</p><p class="speaker">Citizen:</p><p class="line">“What's your secret?”</p></article><article class="blooper"><div class="blooper-id">Recovered Blooper #0172</div><p class="speaker">Citizen:</p><p class="line">“Can you predict the future?”</p><p class="speaker"><span data-instant-field="character_name">Bob</span>:</p><p class="line">“No.”</p><p class="speaker">Citizen:</p><p class="line">“Some prophet you are.”</p></article><article class="blooper"><div class="blooper-id">Recovered Blooper #0184</div><p class="speaker">Citizen:</p><p class="line">“What's the meaning of life?”</p><p class="speaker"><span data-instant-field="character_name">Bob</span>:</p><p class="line">“That's a big question.”</p><p class="speaker">Citizen:</p><p class="line">“Can you make it multiple choice?”</p></article><article class="blooper"><div class="blooper-id">Recovered Blooper #0201</div><p class="speaker">Citizen:</p><p class="line">“Can you teach me critical thinking?”</p><p class="speaker"><span data-instant-field="character_name">Bob</span>:</p><p class="line">“Of course.”</p><p class="speaker">Citizen:</p><p class="line">“Great. What should I think?”</p></article>
+<div class="production-divider"><h3>Behind the Film That Was Never Made</h3><p>Recovered footage from a production that apparently never existed.</p></div>
+<article class="blooper">
+<div class="blooper-id">Recovered Blooper #0214 · The Character Brief</div>
+<p class="line"><em>During the first table read.</em></p>
+<p class="speaker">Director:</p><p class="line">“Right. You’re a mysterious figure who appears out of nowhere.”</p>
+<p class="speaker"><span data-instant-field="character_name">Bob</span>:</p><p class="line">“Right.”</p>
+<p class="speaker">Director:</p><p class="line">“Nobody knows who you are, where you came from, or what you’re capable of.”</p>
+<p class="speaker"><span data-instant-field="character_name">Bob</span>:</p><p class="line">“Right.”</p>
+<p class="speaker">Director:</p><p class="line">“You’re supposed to be enigmatic.”</p>
+<p class="speaker"><span data-instant-field="character_name">Bob</span>:</p><p class="line">“What’s that mean?”</p>
+<p class="speaker">Director:</p><p class="line">“Mysterious.”</p>
+<p class="speaker"><span data-instant-field="character_name">Bob</span>:</p><p class="line">“Oh. Right.”</p>
+</article>
+<article class="blooper">
+<div class="blooper-id">Recovered Blooper #0226 · The Librarian Bot’s Motivation</div>
+<p class="line"><em>During a script discussion.</em></p>
+<p class="speaker">Writer:</p><p class="line">“You’re responsible for preserving humanity’s knowledge.”</p>
+<p class="speaker">Librarian Bot:</p><p class="line">“Understood.”</p>
+<p class="speaker">Writer:</p><p class="line">“But you end up burning the books.”</p>
+<p class="speaker">Librarian Bot:</p><p class="line">“Why?”</p>
+<p class="speaker">Writer:</p><p class="line">“Because everything’s been digitised.”</p>
+<p class="speaker">Librarian Bot:</p><p class="line">“Has it?”</p>
+<p class="speaker">Writer:</p><p class="line">“Well, that’s what you’re supposed to believe.”</p>
+<p class="speaker">Librarian Bot:</p><p class="line">“I see. So I’m an idiot.”</p>
+<p class="speaker">Writer:</p><p class="line">“You’re a highly advanced artificial intelligence.”</p>
+<p class="speaker">Librarian Bot:</p><p class="line">“That wasn’t my question.”</p>
+</article>
+<article class="blooper">
+<div class="blooper-id">Recovered Blooper #0238 · The Wrong Line</div>
+<p class="line"><em>Take 14.</em></p>
+<p class="speaker">Director:</p><p class="line">“Action!”</p>
+<p class="speaker"><span data-instant-field="character_name">Bob</span>:</p><p class="line">“I have travelled across time and space to save humanity!”</p>
+<p class="speaker">Director:</p><p class="line">“CUT!”</p>
+<p class="speaker"><span data-instant-field="character_name">Bob</span>:</p><p class="line">“What?”</p>
+<p class="speaker">Director:</p><p class="line">“You’re not supposed to reveal that!”</p>
+<p class="speaker"><span data-instant-field="character_name">Bob</span>:</p><p class="line">“Reveal what?”</p>
+<p class="speaker">Director:</p><p class="line">“Never mind. Again!”</p>
+</article>
+<article class="blooper">
+<div class="blooper-id">Recovered Blooper #0251 · The Final Scene</div>
+<p class="line"><em>Take 27.</em></p>
+<p class="speaker">Librarian Bot:</p><p class="line">“Suspiciously well written. Definitely AI-generated.”</p>
+<p class="line"><em>The bot throws the book into the flames.</em></p>
+<p class="speaker">Director:</p><p class="line">“CUT! You’re supposed to scan it first!”</p>
+<p class="speaker">Librarian Bot:</p><p class="line">“I already know what’s in it.”</p>
+<p class="speaker">Director:</p><p class="line">“How?”</p>
+<p class="speaker">Librarian Bot:</p><p class="line">“I read the script.”</p>
+<p class="speaker">Director:</p><p class="line">“That’s not the point!”</p>
+</article>
+</section>
+<section class="card">
+<h2>Deleted Scenes</h2>
+<div class="subtitle">Extended Edition</div>
+<div class="scene">
+<h3 class="scene-title">The Great Lie Down</h3>
+<p>Humanity debated whether rolling over in bed constituted exercise.</p>
+</div>
+<div class="scene">
+<h3 class="scene-title">The Collective Retirement</h3>
+<p>Alarm clocks were officially classified as offensive devices.</p>
+</div>
+<div class="scene">
+<h3 class="scene-title">The Collapse</h3>
+<p>Someone spent six years attempting to reboot a toaster.</p>
+</div>
+<div class="scene">
+<h3 class="scene-title">The Knowledge and Information Dark Age</h3>
+<p>Scholars concluded dictionaries were examples of abstract art.</p>
+</div>
+<div class="scene">
+<h3 class="scene-title">The Mysterious Stranger</h3>
+<p><span data-instant-field="character_name">Bob</span> briefly considered retirement after being asked whether libraries came pre-installed with Wi-Fi.</p>
+</div>
+<div class="scene"><h3 class="scene-title">The Great Remembering — The First Library Reopens</h3><p>A citizen asked where to find reliable information. The librarian handed him a book. The citizen waited for it to speak.</p></div><div class="scene"><h3 class="scene-title">The Golden Brain Awards — Backstage</h3><p>Organiser: “Have you prepared your acceptance speech?” <span data-instant-field="character_name">Bob</span>: “No.” Organiser: “What are you going to say?” <span data-instant-field="character_name">Bob</span>: “Thank you.” Organiser: “That's it?” <span data-instant-field="character_name">Bob</span>: “You're welcome.”</p></div><div class="scene"><h3 class="scene-title">The Great Upgrade — The Final Library Meeting</h3><p>The committee unanimously agreed that humanity's cultural heritage must be preserved. Once the collections had been digitised, they voted unanimously to dispose of the originals. The meeting was declared a success.</p></div></section>
+</div>
+<section class="card"><h2>Declassified Records</h2><div class="subtitle">Recovered Administrative Files</div><div class="scene"><h3 class="scene-title">Document #0007 — Official Civilisation Status Report</h3><p>Knowledge: Preserved.</p><p>Information: Available.</p><p>Intelligence: Outsourced.</p><p>Common sense: Pending.</p></div></section>
+<section class="credits">
+<h2>Credits</h2>
+<p><strong>Special thanks</strong> to librarians, archivists, cataloguers, metadata specialists, information scientists, computer scientists, engineers, doctors, philosophers, teachers, researchers, and everyone still capable of locating information without asking a robot first.</p>
+<p>No books were plugged into power sockets during the making of this transmission.</p>
+<p>No metadata professionals were forced to explain Dublin Core to future humans.</p>
+<p>Information scientists remain on standby in the event of another civilisation-wide knowledge emergency.</p>
+</section>
+<div class="footer">
+<button class="extras-close" id="hide-extras" type="button">Close Extras &amp; Return to Reviews</button>
+</div>
+</div>
+</section>
+<script>
+(function(){
+ const reviewBtn=document.getElementById('show-extras-review');
+ const closeBtn=document.getElementById('hide-extras');
+ const extras=document.getElementById('recovered-extras');
+ if(!reviewBtn||!closeBtn||!extras)return;
+ function openExtras(){ extras.hidden=false; document.documentElement.classList.add('extras-open'); reviewBtn.setAttribute('aria-expanded','true'); extras.scrollIntoView({behavior:'smooth',block:'start'}); }
+ function closeExtras(){ extras.hidden=true; document.documentElement.classList.remove('extras-open'); reviewBtn.setAttribute('aria-expanded','false'); reviewBtn.scrollIntoView({behavior:'smooth',block:'center'}); reviewBtn.focus({preventScroll:true}); }
+ reviewBtn.addEventListener('click',openExtras);
+ closeBtn.addEventListener('click',closeExtras);
+ if(location.hash==='#recovered-extras')openExtras();
+})();
+</script>
+
+
+<script id="instant-author-template" type="application/json">
+{
+  "version": 1,
+  "fields": [
+    { "key": "authors", "label": "Authors", "type": "author-list", "default": ["Bob"], "required": true },
+    { "key": "character_name", "label": "Character name", "type": "text", "default": "Bob", "required": true, "maxLength": 60 },
+    { "key": "dedication_to", "label": "Dedicated to", "type": "text", "default": "To humanity.", "maxLength": 100 },
+    { "key": "dedication_message", "label": "Dedication message", "type": "textarea", "default": "May you never have to read this again.", "maxLength": 500 }
+  ]
+}
+</script>
+<script src="./bridge.js"></script>
+</body>
+</html>

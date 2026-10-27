@@ -1,0 +1,11 @@
+{
+  "id": "the-great-lie-down",
+  "title": "The Great Lie Down",
+  "version": 1,
+  "fields": [
+    { "key": "authors", "label": "Authors", "type": "author-list", "default": ["Bob"], "required": true },
+    { "key": "character_name", "label": "Character name", "type": "text", "default": "Bob", "required": true, "maxLength": 60 },
+    { "key": "dedication_to", "label": "Dedicated to", "type": "text", "default": "To humanity.", "maxLength": 100 },
+    { "key": "dedication_message", "label": "Dedication message", "type": "textarea", "default": "May you never have to read this again.", "maxLength": 500 }
+  ]
+}

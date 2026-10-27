@@ -1,0 +1,10 @@
+.ia-purpose { color: #332934 !important; font-size: 17px; }
+.ia-author-block { margin: 17px 0; padding: 14px; background: #f4efe8; border-radius: 15px; }
+.ia-author-block > span { display: block; margin-bottom: 9px; color: #766a73; font-size: 12px; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
+.ia-author-pills { display: flex; flex-wrap: wrap; gap: 7px; }
+.ia-author-pills span { padding: 7px 11px; border: 1px solid #c9bec5; border-radius: 999px; background: #fff; font-weight: 750; }
+.ia-author-pills .ia-author-preview { border-style: dashed; background: #fff8cf; }
+.ia-author-add{display:inline-flex;align-items:center;margin-top:8px;border:1px dashed #9a7f00;border-radius:999px;background:#fff8cf;overflow:hidden}.ia-author-add input{width:130px;min-height:38px;padding:0 5px 0 13px;border:0;outline:0;background:transparent;font-weight:750}.ia-author-add button{width:38px;height:38px;padding:0;border:0;background:#ffd51f;font-size:20px;font-weight:900;cursor:pointer}.ia-authorship-guidance{margin:12px 0 0;color:#746872!important;font-size:13px}.ia-after-join{display:flex;gap:9px;margin-top:13px}.ia-after-join[hidden]{display:none}
+.ia-inline-status { min-height: 0; margin: 10px 0; color: #19663c !important; font-size: 13px; font-weight: 750; }
+.ia-dialog-toast { position: sticky; left: auto; bottom: 14px; width: max-content; max-width: calc(100% - 28px); margin: -8px auto 14px; translate: 0 10px; text-align: center; }
+.ia-dialog-toast[data-visible] { translate: 0 0; }

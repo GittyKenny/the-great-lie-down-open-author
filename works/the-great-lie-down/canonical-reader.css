@@ -1,0 +1,36 @@
+/* Preserve the original desktop reading scale inside a narrower hosted reader. */
+@media (min-width: 721px) and (max-width: 1100px) {
+  section { padding: 20px; }
+
+  .panel--dense {
+    padding: 42px 42px 36px;
+  }
+
+  .panel--dense h1 {
+    font-size: 72px;
+  }
+
+  .panel--dense h2,
+  .panel--dense + h2 {
+    font-size: 32px;
+  }
+
+  .panel--dense .small-text,
+  .panel--dense .ending {
+    font-size: 20px;
+    line-height: 1.42;
+  }
+
+  .slide-6 .panel--dense h1 { font-size: 68px; }
+  .slide-6 .small-text,
+  .slide-6 .ending { font-size: 19px; }
+
+  .slide-7 .panel--dense h1 { font-size: 60px; }
+  .slide-7 h2 { font-size: 26px; }
+  .slide-7 .small-text,
+  .slide-7 .ending { font-size: 18px; }
+
+  .slide-rumours .panel--dense h1 { font-size: 58px; }
+  .slide-rumours .panel--dense h2 { font-size: 25px; }
+  .slide-rumours .panel--dense p.small-text { font-size: 17px; }
+}
